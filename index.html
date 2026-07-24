@@ -612,8 +612,16 @@ resetIdle();
 let touchY=null;
 window.addEventListener('touchstart',e=>{touchY=e.touches[0].clientY;},{passive:true});
 window.addEventListener('touchend',e=>{
-  if(touchY===null)return;const d=touchY-e.changedTouches[0].clientY;
-  if(Math.abs(d)>70)go(cur+(d>0?1:-1));touchY=null;},{passive:true});
+  if(touchY===null)return;
+  const d=touchY-e.changedTouches[0].clientY;touchY=null;
+  if(Math.abs(d)<90)return;
+  const sc=scenes[cur],down=d>0;
+  const canDown=sc.scrollTop+sc.clientHeight<sc.scrollHeight-8;
+  const canUp=sc.scrollTop>8;
+  if(down&&canDown)return;
+  if(!down&&canUp)return;
+  go(cur+(down?1:-1));
+},{passive:true});
 
 /* ---------- CURSOR ---------- */
 const dot=document.querySelector('.cursor-dot'),ring=document.querySelector('.cursor-ring');
