@@ -820,6 +820,13 @@ function pick(i){
     gsap.to(view,{opacity:1,y:0,duration:.4,ease:'power2.out'});}});
   bindHover();
 }
+document.addEventListener('click',e=>{
+  const v=document.querySelector('.svc-view');
+  if(!v||!v.classList.contains('show'))return;
+  if(e.target.closest('.svc-view')||e.target.closest('.svc-list'))return;
+  gsap.to(v,{opacity:0,y:14,duration:.28,ease:'power2.in',onComplete:()=>v.classList.remove('show')});
+  document.querySelectorAll('.svc-list button').forEach(b=>b.classList.remove('on'));
+});
 document.getElementById('svcImg').src=SVC[0].img;
 document.getElementById('svcTitle').textContent=SVC[0].t;
 document.getElementById('svcText').textContent=SVC[0].x;
