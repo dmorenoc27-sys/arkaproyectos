@@ -640,14 +640,10 @@ function entrance(i){
 }
 window.go=function(i){
   if(busy||i===cur||i<0||i>=scenes.length)return;busy=true;
-  const fwd=i>cur,o1=fwd?'left':'right',o2=fwd?'right':'left';
-  const tl=gsap.timeline({onComplete:()=>{busy=false;}});
-  tl.set('.slat',{transformOrigin:o1})
-    .to('.slat',{scaleX:1,duration:.38,stagger:fwd?.055:-.055,ease:'power3.inOut'})
-    .add(()=>{gsap.set(scenes[cur],{x:0,y:0});scenes[cur].classList.remove('active');scenes[i].classList.add('active');updateUI(i);cur=i;})
-    .set('.slat',{transformOrigin:o2})
-    .to('.slat',{scaleX:0,duration:.42,stagger:fwd?.055:-.055,ease:'power3.inOut'})
-    .add(()=>entrance(i),'-=.4');
+  gsap.set(scenes[cur],{x:0,y:0});scenes[cur].classList.remove('active');
+  scenes[i].classList.add('active');updateUI(i);cur=i;
+  entrance(i);
+  setTimeout(()=>{busy=false;},350);
 };
 window.addEventListener('keydown',e=>{
   if(['ArrowRight','ArrowDown','PageDown'].includes(e.key))go(cur+1);
@@ -673,19 +669,9 @@ const T0=document.title;
 document.addEventListener('visibilitychange',()=>{
   document.title=document.hidden?'← Su proyecto espera · ARKA':T0;});
 
-/* ---------- MODO CINE (recorrido automático tras 20s de inactividad) ---------- */
-let idleT=null,cineT=null;
+/* ---------- MODO CINE DESACTIVADO (la página solo cambia con clic, flechas o teclado) ---------- */
+let cineT=null;
 function stopCine(){if(cineT){clearInterval(cineT);cineT=null;}}
-function resetIdle(){
-  stopCine();clearTimeout(idleT);
-  idleT=setTimeout(()=>{
-    if(document.getElementById('modal').classList.contains('on'))return resetIdle();
-    cineT=setInterval(()=>{go((cur+1)%scenes.length);},7000);
-  },20000);
-}
-['click','keydown','touchstart','wheel'].forEach(ev=>
-  window.addEventListener(ev,resetIdle,{passive:true}));
-resetIdle();
 let touchY=null;
 window.addEventListener('touchstart',e=>{touchY=e.touches[0].clientY;},{passive:true});
 window.addEventListener('touchend',e=>{
