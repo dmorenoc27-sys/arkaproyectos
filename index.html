@@ -39,8 +39,7 @@ button{font-family:inherit;cursor:pointer}
 /* ---------- PRELOADER ---------- */
 #preloader{position:fixed;inset:0;background:var(--ink);z-index:1000;display:none;align-items:center;justify-content:center;flex-direction:column}
 .js #preloader{display:flex}
-.pl-card{width:min(76vw,480px);border-radius:16px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.55)}
-.pl-card img{width:100%;display:block}
+.pl-logo{width:min(82vw,620px);display:block;overflow:visible}
 
 /* ---------- CURSOR ---------- */
 .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:999;border-radius:50%;transform:translate(-50%,-50%)}
@@ -59,7 +58,7 @@ button{font-family:inherit;cursor:pointer}
 header{position:fixed;top:0;left:0;right:0;z-index:120}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:24px clamp(20px,4vw,54px)}
 .brand{display:flex;align-items:center;gap:12px;cursor:pointer}
-.blogo{height:54px;width:auto;border-radius:10px;display:block;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.blogo{height:56px;width:auto;display:block}
 .menu{display:flex;gap:30px}
 .menu button{background:none;border:none;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);transition:color .3s;padding:4px 0;position:relative}
 .menu button.on,.menu button:hover{color:var(--cream)}
@@ -251,7 +250,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 @media(max-width:860px){
   header{background:linear-gradient(180deg,rgba(6,13,23,.96) 55%,rgba(6,13,23,0));backdrop-filter:blur(6px)}
   .nav{padding:16px 20px}
-  .blogo{height:42px}
+  .blogo{height:44px}
   .dots{display:none}
   .hint{display:none}
   .hud{left:16px;bottom:16px;gap:8px}
@@ -270,7 +269,28 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 <body>
 
 <div id="preloader">
-  <div class="pl-card"><img src="arka-logo.jpg" alt="Arka Proyectos"></div>
+  <svg id="plLogo" class="pl-logo" viewBox="0 0 890 430" aria-label="ARKA Proyectos">
+  <g stroke="#F5F2EA" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g id="plA1"><path d="M105 290 L170 112 L235 290"/></g>
+    <g id="plRest">
+      <g><path d="M330 112 L330 290"/><path d="M330 120 L392 120 Q440 120 440 165 Q440 210 392 210 L330 210"/><path d="M390 210 L448 290"/></g>
+      <g><path d="M505 112 L505 290"/><path d="M613 112 L507 206"/><path d="M520 194 L613 290"/></g>
+      <g><path d="M675 290 L740 112 L805 290"/></g>
+    </g>
+  </g>
+  <g id="plArrow">
+    <g stroke="#C9A85C" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M30 220 L44 232 M30 244 L44 232"/><path d="M46 220 L60 232 M46 244 L60 232"/><path d="M62 220 L76 232 M62 244 L76 232"/>
+    </g>
+    <line x1="48" y1="232" x2="282" y2="232" stroke="#C9A85C" stroke-width="7" stroke-linecap="round"/>
+    <polygon points="279,217 318,232 279,247 286,232" fill="#C9A85C"/>
+  </g>
+  <g id="plProy">
+    <text x="455" y="386" text-anchor="middle" font-family="Jost, Helvetica, Arial, sans-serif" font-size="36" font-weight="500" letter-spacing="27" fill="#C9A85C">PROYECTOS</text>
+    <line x1="105" y1="374" x2="190" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
+    <line x1="720" y1="374" x2="805" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>
   <div class="pl-pct">CARGANDO <b id="plN">0</b>%</div>
 </div>
 
@@ -282,7 +302,28 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 <header>
   <div class="nav">
     <div class="brand" onclick="go(0)" data-hover>
-      <img class="blogo" src="arka-logo.jpg" alt="ARKA Proyectos">
+      <svg class="blogo" viewBox="0 0 890 430" aria-label="ARKA Proyectos">
+  <g stroke="#F5F2EA" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g><path d="M105 290 L170 112 L235 290"/></g>
+    <g>
+      <g><path d="M330 112 L330 290"/><path d="M330 120 L392 120 Q440 120 440 165 Q440 210 392 210 L330 210"/><path d="M390 210 L448 290"/></g>
+      <g><path d="M505 112 L505 290"/><path d="M613 112 L507 206"/><path d="M520 194 L613 290"/></g>
+      <g><path d="M675 290 L740 112 L805 290"/></g>
+    </g>
+  </g>
+  <g>
+    <g stroke="#C9A85C" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M30 220 L44 232 M30 244 L44 232"/><path d="M46 220 L60 232 M46 244 L60 232"/><path d="M62 220 L76 232 M62 244 L76 232"/>
+    </g>
+    <line x1="48" y1="232" x2="282" y2="232" stroke="#C9A85C" stroke-width="7" stroke-linecap="round"/>
+    <polygon points="279,217 318,232 279,247 286,232" fill="#C9A85C"/>
+  </g>
+  <g>
+    <text x="455" y="386" text-anchor="middle" font-family="Jost, Helvetica, Arial, sans-serif" font-size="36" font-weight="500" letter-spacing="27" fill="#C9A85C">PROYECTOS</text>
+    <line x1="105" y1="374" x2="190" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
+    <line x1="720" y1="374" x2="805" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>
     </div>
     <nav class="menu">
       <button data-go="0" class="on" data-hover>Inicio</button>
@@ -520,9 +561,15 @@ const scenes=[...document.querySelectorAll('.scene')];
 
 /* ---------- PRELOADER ---------- */
 const pl=gsap.timeline();
-pl.fromTo('.pl-card',{opacity:0,scale:.9,y:16},{opacity:1,scale:1,y:0,duration:.95,ease:'power3.out',delay:.1},0)
-  .fromTo('#plN',{innerText:0},{innerText:100,duration:1.4,snap:{innerText:1},ease:'power2.inOut'},'-=.45')
-  .to('#preloader',{yPercent:-100,duration:.85,ease:'power4.inOut',delay:.25})
+pl.from('#plA1',{y:80,opacity:0,duration:.9,ease:'power3.out',delay:.25},0)
+  .from('#plProy line',{opacity:0,duration:.01},0)
+  .fromTo('#plArrow',{x:-430},{x:0,duration:1.3,ease:'power2.in'},'-=.05')
+  .to('#plLogo',{x:7,duration:.06,ease:'power1.out'})
+  .to('#plLogo',{x:0,duration:.45,ease:'elastic.out(1,.35)'})
+  .from('#plRest g',{x:-46,opacity:0,duration:.75,stagger:.13,ease:'power3.out'},'-=.42')
+  .from('#plProy',{opacity:0,y:16,duration:.65,ease:'power3.out'},'-=.25')
+  .fromTo('#plN',{innerText:0},{innerText:100,duration:1.3,snap:{innerText:1},ease:'power2.inOut'},'-=1.1')
+  .to('#preloader',{yPercent:-100,duration:.85,ease:'power4.inOut',delay:.3})
   .set('#preloader',{display:'none'})
   .add(()=>entrance(0),'-=.5');
 setTimeout(function(){var p=document.getElementById('preloader');
