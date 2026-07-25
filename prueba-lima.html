@@ -399,7 +399,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
   </section>
 
   <section class="scene" id="s1">
-<div class="scn-vid"><video autoplay muted loop playsinline preload="auto" src="https://videos.pexels.com/video-files/15809929/15809929-hd_1920_1080_25fps.mp4" data-alt="https://videos.pexels.com/video-files/15809929/15809929-uhd_2560_1440_25fps.mp4" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt;this.play&&this.play()}"></video></div>
+<div class="scn-vid"><video muted loop playsinline preload="none" src="https://videos.pexels.com/video-files/15809929/15809929-hd_1920_1080_25fps.mp4" data-alt="https://videos.pexels.com/video-files/15809929/15809929-uhd_2560_1440_25fps.mp4" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt;this.play&&this.play()}"></video></div>
 
     <div class="svc-bg"><img id="svcBg" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=70" alt=""></div>
     <div class="svc-num" id="svcNum">01</div>
@@ -419,7 +419,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
   </section>
 
   <section class="scene" id="s2">
-<div class="scn-vid"><video autoplay muted loop playsinline preload="auto" src="https://videos.pexels.com/video-files/20091535/20091535-hd_1920_1080_30fps.mp4" data-alt="https://videos.pexels.com/video-files/20091535/20091535-uhd_2560_1440_30fps.mp4" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt;this.play&&this.play()}"></video></div>
+<div class="scn-vid"><video muted loop playsinline preload="none" src="https://videos.pexels.com/video-files/20091535/20091535-hd_1920_1080_30fps.mp4" data-alt="https://videos.pexels.com/video-files/20091535/20091535-uhd_2560_1440_30fps.mp4" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt;this.play&&this.play()}"></video></div>
 
     <div class="kicker anim">03 — Lo que construimos</div>
     <h2 class="title anim" style="font-size:clamp(36px,5vw,64px);margin-top:14px">Proyectos con <em>nombre propio.</em></h2>
@@ -444,7 +444,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
   </section>
 
   <section class="scene" id="sR">
-<div class="scn-vid"><video autoplay muted loop playsinline preload="auto" src="https://videos.pexels.com/video-files/17057988/17057988-hd_1920_1080_30fps.mp4" data-alt="https://videos.pexels.com/video-files/17057988/17057988-uhd_2560_1440_30fps.mp4" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt;this.play&&this.play()}"></video></div>
+<div class="scn-vid"><video muted loop playsinline preload="none" src="https://videos.pexels.com/video-files/17057988/17057988-hd_1920_1080_30fps.mp4" data-alt="https://videos.pexels.com/video-files/17057988/17057988-uhd_2560_1440_30fps.mp4" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt;this.play&&this.play()}"></video></div>
 
     <div class="kicker anim">04 — Respaldo</div>
     <h2 class="title anim" style="font-size:clamp(36px,5vw,64px);margin-top:14px">La confianza<br>se <em>construye.</em></h2>
@@ -896,5 +896,18 @@ document.querySelectorAll('.work,.svc-view,.q-out').forEach(card=>{
 }
 </script>
 <div id="modoprueba">MODO PRUEBA · LIMA EN ESCENAS 02 · 03 · 04</div>
+<script>
+(function(){
+  function mv(){document.querySelectorAll('.scene').forEach(function(sc){
+    var v=sc.querySelector('.scn-vid video');if(!v)return;
+    if(sc.classList.contains('active')){if(!v.src&&v.dataset.src){v.src=v.dataset.src;}v.play&&v.play().catch(function(){});}
+    else{v.pause&&v.pause();}
+  });}
+  var g=window.go;
+  if(g){window.go=function(i){g(i);setTimeout(mv,950);};}
+  var iv=setInterval(mv,2500); setTimeout(function(){clearInterval(iv);},20000);
+  setTimeout(mv,2500);
+})();
+</script>
 </body>
 </html>
