@@ -94,6 +94,11 @@ header{position:fixed;top:0;left:0;right:0;z-index:120}
 .scene{padding:122px clamp(56px,6vw,110px) 84px clamp(100px,9vw,160px);min-height:100vh;display:flex;flex-direction:column;justify-content:safe center}
 @media(max-width:860px){.scene{padding-left:24px;padding-right:24px}}
 .js .scene{position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none;overflow-y:auto;overflow-x:hidden}
+.scn-vid{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.scn-vid video{width:100%;height:100%;object-fit:cover;opacity:.38}
+.scn-vid::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,20,.50),rgba(10,14,20,.78))}
+.scene>*:not(.scn-vid){position:relative;z-index:1}
+#modoprueba{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:2000;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.3em;color:#C9A85C;background:rgba(10,12,16,.8);border:1px solid rgba(201,168,92,.4);border-radius:30px;padding:6px 16px}
 .js .scene.active{opacity:1;visibility:visible;pointer-events:auto}
 
 .kicker{display:flex;align-items:center;gap:16px;color:var(--gold2);letter-spacing:.45em;font-size:11px;text-transform:uppercase;font-weight:500}
@@ -379,7 +384,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 
   <section class="scene active" id="s0">
     <video id="bgvid" autoplay muted loop playsinline preload="auto"
-      src="https://videos.pexels.com/video-files/15809929/15809929-hd_1920_1080_25fps.mp4"
+      src="https://videos.pexels.com/video-files/2818546/2818546-hd_1920_1080_24fps.mp4"
       onerror="try{this.remove()}catch(e){}"></video>
     <canvas id="stars"></canvas>
     <div class="inner">
@@ -394,6 +399,8 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
   </section>
 
   <section class="scene" id="s1">
+<div class="scn-vid"><video autoplay muted loop playsinline preload="auto" src="https://videos.pexels.com/video-files/15809929/15809929-hd_1920_1080_25fps.mp4" data-alt="https://videos.pexels.com/video-files/15809929/15809929-uhd_2560_1440_25fps.mp4" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt;this.play&&this.play()}"></video></div>
+
     <div class="svc-bg"><img id="svcBg" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=70" alt=""></div>
     <div class="svc-num" id="svcNum">01</div>
     <div class="kicker anim">02 — Qué hacemos</div>
@@ -412,6 +419,8 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
   </section>
 
   <section class="scene" id="s2">
+<div class="scn-vid"><video autoplay muted loop playsinline preload="auto" src="https://videos.pexels.com/video-files/20091535/20091535-hd_1920_1080_30fps.mp4" data-alt="https://videos.pexels.com/video-files/20091535/20091535-uhd_2560_1440_30fps.mp4" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt;this.play&&this.play()}"></video></div>
+
     <div class="kicker anim">03 — Lo que construimos</div>
     <h2 class="title anim" style="font-size:clamp(36px,5vw,64px);margin-top:14px">Proyectos con <em>nombre propio.</em></h2>
     <div class="works">
@@ -435,6 +444,8 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
   </section>
 
   <section class="scene" id="sR">
+<div class="scn-vid"><video autoplay muted loop playsinline preload="auto" src="https://videos.pexels.com/video-files/17057988/17057988-hd_1920_1080_30fps.mp4" data-alt="https://videos.pexels.com/video-files/17057988/17057988-uhd_2560_1440_30fps.mp4" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt;this.play&&this.play()}"></video></div>
+
     <div class="kicker anim">04 — Respaldo</div>
     <h2 class="title anim" style="font-size:clamp(36px,5vw,64px);margin-top:14px">La confianza<br>se <em>construye.</em></h2>
     <div class="r-badges">
@@ -884,21 +895,6 @@ document.querySelectorAll('.work,.svc-view,.q-out').forEach(card=>{
 
 }
 </script>
-
-<div id="prueba" style="position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:2000;display:flex;gap:8px;align-items:center;background:rgba(10,12,16,.85);border:1px solid rgba(201,168,92,.45);border-radius:40px;padding:8px 14px;backdrop-filter:blur(8px);font-family:'Jost',sans-serif">
-  <span style="font-size:10px;letter-spacing:.25em;color:#C9A85C">PRUEBA · FONDO:</span>
-  <button onclick="setV('A')" data-hover style="background:none;border:1px solid #C9A85C;color:#F5F2EA;border-radius:20px;padding:5px 12px;font-size:11px;letter-spacing:.1em">A · Skyline Miraflores</button>
-  <button onclick="setV('B')" data-hover style="background:none;border:1px solid #C9A85C;color:#F5F2EA;border-radius:20px;padding:5px 12px;font-size:11px;letter-spacing:.1em">B · Costa Verde</button>
-  <button onclick="setV('C')" data-hover style="background:none;border:1px solid #C9A85C;color:#F5F2EA;border-radius:20px;padding:5px 12px;font-size:11px;letter-spacing:.1em">C · Atardecer</button>
-</div>
-<script>
-var OPTS={
- A:['https://videos.pexels.com/video-files/15809929/15809929-hd_1920_1080_25fps.mp4','https://videos.pexels.com/video-files/15809929/15809929-uhd_2560_1440_25fps.mp4'],
- B:['https://videos.pexels.com/video-files/20091535/20091535-hd_1920_1080_30fps.mp4','https://videos.pexels.com/video-files/20091535/20091535-uhd_2560_1440_30fps.mp4'],
- C:['https://videos.pexels.com/video-files/17057988/17057988-hd_1920_1080_30fps.mp4','https://videos.pexels.com/video-files/17057988/17057988-uhd_2560_1440_30fps.mp4']};
-function setV(k){var v=document.getElementById('bgvid');if(!v)return;var i=0,l=OPTS[k];
- v.onerror=function(){i++;if(l[i]){v.src=l[i];v.play&&v.play();}};
- v.src=l[0];v.muted=true;v.play&&v.play();}
-</script>
+<div id="modoprueba">MODO PRUEBA · LIMA EN ESCENAS 02 · 03 · 04</div>
 </body>
 </html>
