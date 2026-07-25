@@ -186,11 +186,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 #s1 .svc-list li{will-change:transform}
 #s1 .svc-view{position:absolute;right:calc(100% + clamp(20px,2.5vw,48px));top:50%;transform:translateY(-50%);width:min(370px,30vw);opacity:0;visibility:hidden}
 #s1 .svc-view.show{visibility:visible}
-#s1{justify-content:flex-start}
 #s1 .svc-bg{display:none}
-#s1 h2.title{font-size:clamp(54px,7.5vw,116px)!important;line-height:1.04}
-#s1 .s1-sub{position:relative;z-index:2;margin-top:16px;font-size:clamp(17px,1.7vw,24px);color:rgba(240,235,224,.88);letter-spacing:.02em;font-weight:300}
-#s1 .s1-sub b{color:var(--gold2);font-weight:500}
 @media(max-width:900px){
  #s1 .svc-wrap{position:static;transform:none;width:100%;margin-top:20px}
  #s1 .svc-view{position:static;transform:none;width:100%;margin-top:14px}
@@ -417,9 +413,8 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 <div class="scn-vid"><video muted loop playsinline preload="none" src="https://videos.pexels.com/video-files/15809929/15809929-hd_1920_1080_25fps.mp4" data-alt="https://videos.pexels.com/video-files/15809929/15809929-uhd_2560_1440_25fps.mp4" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.dataset.alt;this.play&&this.play()}"></video></div>
 
     <div class="svc-bg"><img id="svcBg" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=70" alt=""></div>
-    <div class="kicker anim">02 — Servicios</div>
-    <h2 class="title anim" style="margin-top:14px">¿Qué <em>hacemos?</em></h2>
-    <p class="s1-sub anim">Seis capacidades, una sola <b>dirección.</b></p>
+    <div class="kicker anim">02 — Qué hacemos</div>
+    <h2 class="title anim" style="font-size:clamp(36px,5vw,64px);margin-top:14px">Seis capacidades,<br>una sola <em>dirección.</em></h2>
     <div class="svc-wrap">
       <ul class="svc-list anim" id="svcList"></ul>
       <div class="svc-view anim">
