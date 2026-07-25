@@ -223,35 +223,21 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 /* ---------- FICHA DE PROYECTO (MODAL) ---------- */
 #modal{position:fixed;inset:0;z-index:800;display:none;align-items:center;justify-content:center;background:rgba(6,12,22,.78);backdrop-filter:blur(10px)}
 #modal.on{display:flex}
-.m-panel{width:min(680px,92vw);max-height:86vh;overflow:auto;border:1px solid var(--line);border-radius:12px;background:linear-gradient(165deg,#101E33,#0A1626);padding:40px;position:relative}
+.m-panel{width:min(760px,94vw);max-height:92vh;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:linear-gradient(165deg,#101E33,#0A1626);padding:32px 36px;position:relative}
+.m-panel h3{font-size:clamp(22px,2.6vw,30px)!important;margin:8px 0 10px!important}
+.m-panel p{font-size:14.5px!important}
 .m-close{position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--cream);font-size:17px;transition:all .3s}
 .m-close:hover{background:var(--gold);color:var(--navy)}
 .m-panel .mk{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2)}
 .m-panel h3{font-family:'Fraunces',serif;font-size:clamp(28px,3.4vw,40px);font-weight:600;color:var(--cream);margin:10px 0 14px}
 .m-panel p{color:var(--gray);font-weight:300;font-size:15.5px}
 .m-panel .mm{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2)}
-#mShot{display:block;margin-top:22px;text-decoration:none}
-.m-shot{width:100%;display:block;border-radius:10px;border:1px solid rgba(176,141,62,.35);box-shadow:0 24px 50px rgba(0,0,0,.45);transition:transform .4s ease,box-shadow .4s ease}
-#mShot:hover .m-shot{transform:scale(1.015);box-shadow:0 30px 60px rgba(0,0,0,.6)}
-.m-shot-cap{display:block;margin-top:10px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);text-align:center}
-.m-dash{margin-top:18px;border:1px solid rgba(176,141,62,.25);border-radius:10px;padding:20px;background:linear-gradient(165deg,#0C1B2E,#091524)}
-.md-head{display:flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.25em;color:var(--gold2);text-transform:uppercase;margin-bottom:16px}
-.md-live{width:8px;height:8px;border-radius:50%;background:#4CAF7D;animation:mdblink 1.6s ease-in-out infinite}
+#mShot{display:block;margin-top:18px;text-decoration:none}
+.m-shot{width:100%;display:block;max-height:50vh;object-fit:cover;object-position:top;border-radius:10px;border:1px solid rgba(176,141,62,.35);box-shadow:0 24px 50px rgba(0,0,0,.45);transition:transform .4s ease,box-shadow .4s ease}
+#mShot:hover .m-shot{transform:scale(1.012);box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.m-shot-cap{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:10px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2)}
+.md-live{width:8px;height:8px;border-radius:50%;background:#4CAF7D;animation:mdblink 1.6s ease-in-out infinite;flex-shrink:0}
 @keyframes mdblink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(76,175,125,.5)}50%{opacity:.55;box-shadow:0 0 0 5px rgba(76,175,125,0)}}
-.md-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-@media(max-width:560px){.md-kpis{grid-template-columns:1fr 1fr}}
-.md-kpis>div{background:rgba(16,30,51,.6);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:12px 10px;text-align:center}
-.md-kpis b{font-family:'Fraunces',serif;font-size:24px;font-weight:600;color:var(--gold2);display:block;line-height:1}
-.md-kpis>div>span{display:block;margin-top:6px;font-size:9.5px;letter-spacing:.08em;color:var(--gray);text-transform:uppercase;line-height:1.45}
-.md-rows{margin-top:16px;display:flex;flex-direction:column;gap:10px}
-.md-row{display:flex;align-items:center;gap:12px}
-.md-row>span{width:92px;font-size:11px;letter-spacing:.08em;color:var(--gray);text-transform:uppercase}
-.md-track{flex:1;height:7px;border-radius:4px;background:#16283F;overflow:hidden}
-.md-track i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#3E5F8A,var(--gold2));transition:width 1.4s cubic-bezier(.22,1,.36,1)}
-.md-row b{width:40px;text-align:right;font-family:'Fraunces',serif;font-size:15px;color:var(--cream);font-weight:600}
-.md-chips{margin-top:16px;display:flex;gap:14px;flex-wrap:wrap}
-.md-chips span{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:var(--gray);font-weight:300}
-.md-chips i{width:9px;height:9px;border-radius:50%;display:inline-block}
 /* ---------- REDES SOCIALES ---------- */
 .social{position:fixed;left:clamp(14px,2.2vw,30px);top:50%;transform:translateY(-50%);z-index:120;display:flex;flex-direction:column;align-items:center;gap:14px}
 .social::before,.social::after{content:"";width:1px;height:44px;background:rgba(176,141,62,.35)}
@@ -506,28 +492,8 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
     <p id="mD"></p>
     <a id="mShot" href="#" target="_blank" rel="noopener" style="display:none" data-hover>
       <img class="m-shot" src="minam-dashboard.jpg" alt="Pantalla real del Dashboard UE003 — MINAM">
-      <span class="m-shot-cap">Pantalla real del sistema en producción — clic para abrirlo</span>
+      <span class="m-shot-cap"><i class="md-live"></i>Sistema real en producción — clic para abrirlo</span>
     </a>
-    <div class="m-dash" id="mDash" style="display:none">
-      <div class="md-head"><i class="md-live"></i>DATOS REALES DEL TABLERO · CORTE 2026</div>
-      <div class="md-kpis">
-        <div><b><span class="mk" data-mk="1189">0</span></b><span>S/ MM ejecutados<br>(SIAF 2013–2026)</span></div>
-        <div><b><span class="mk" data-mk="82">0</span></b><span>Inversiones<br>en cartera</span></div>
-        <div><b><span class="mk" data-mk="19.3">0</span></b><span>Millones de<br>beneficiarios</span></div>
-        <div><b><span class="mk" data-mk="400">0</span></b><span>Hectáreas<br>a recuperar</span></div>
-      </div>
-      <div class="md-rows">
-        <div class="md-row"><span>Certificación</span><div class="md-track"><i data-w="97"></i></div><b>97%</b></div>
-        <div class="md-row"><span>Compromiso</span><div class="md-track"><i data-w="88"></i></div><b>88%</b></div>
-        <div class="md-row"><span>Devengado</span><div class="md-track"><i data-w="53"></i></div><b>53%</b></div>
-      </div>
-      <div class="md-chips">
-        <span><i style="background:#4CAF7D"></i>48 culminadas</span>
-        <span><i style="background:#3E5F8A"></i>15 en ejecución</span>
-        <span><i style="background:#C25B4E"></i>15 suspendidas</span>
-        <span><i style="background:#B08D3E"></i>4 por iniciar</span>
-      </div>
-    </div>
     <div class="mm" id="mM"></div>
     <a class="pill solid" id="mLink" href="#" target="_blank" rel="noopener" data-hover style="display:none;margin-top:22px">Ver el dashboard en vivo →</a>
   </div>
@@ -549,7 +515,7 @@ const SCENES=['INICIO','SERVICIOS','PROYECTOS','RESPALDO','CONTACTO'];
 const WORKS=[
  {k:'Obras públicas y privadas',t:'Infraestructura que se ejecuta',d:'Dirección técnica colegiada, control de calidad y seguridad en obra. De la valorización a la liquidación, sin sorpresas para la entidad ni para el propietario.',m:'Edificación · Saneamiento · Vial · Mejoramiento urbano'},
  {k:'Invierte.pe · Ingeniería',t:'Del perfil al expediente',d:'Estudios de preinversión que pasan evaluación y expedientes técnicos listos para ejecutarse. El puente entre la idea y el presupuesto aprobado.',m:'Perfiles · Fichas IOARR · Estudios de mercado · Expedientes'},
- {k:'Caso real · En producción desde 2024',t:'Dashboard Ejecutivo UE003 — Ministerio del Ambiente',d:'Tablero ejecutivo oficial de la Unidad Ejecutora 003 (Gestión Integral de la Calidad Ambiental): S/ 1,189 millones de ejecución acumulada monitoreados, 82 inversiones en cartera, mapa nacional interactivo y ejecución presupuestal en tiempo real conectada a fuentes del MEF.',m:'MINAM · SIAF-MEF · Mapa nacional · En vivo',dash:true,url:'https://www.gica003.pe'},
+ {k:'Caso real · En producción desde 2024',t:'Dashboard Ejecutivo UE003 — Ministerio del Ambiente',d:'S/ 1,189 millones monitoreados, 82 inversiones y mapa nacional en tiempo real, conectado a fuentes oficiales del MEF.',m:'MINAM · SIAF-MEF · Mapa nacional · En vivo',dash:true,url:'https://www.gica003.pe'},
  {k:'Webs · Sistemas',t:'Presencia digital seria',d:'Sitios rápidos, elegantes y administrables para estudios profesionales y empresas. Como esta misma página — construida por nosotros.',m:'Landings · Sistemas de información · Apps a medida'}];
 const SVC=[
  {t:'Consultoría en inversión pública',x:'Formulación y evaluación en el marco de Invierte.pe: estudios de preinversión, perfiles, fichas técnicas IOARR y estudios de mercado para los tres niveles de gobierno.',g:'Invierte.pe · OPMI · UF · UEI',img:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=70'},
@@ -842,22 +808,11 @@ window.openWork=function(i){
   document.getElementById('mT').textContent=d.t;
   document.getElementById('mD').textContent=d.d;
   document.getElementById('mM').textContent=d.m;
-  document.getElementById('mDash').style.display=d.dash?'block':'none';
   const ms=document.getElementById('mShot');
   ms.style.display=d.dash?'block':'none';
   if(d.url)ms.href=d.url;
   if(d.dash){
     gsap.fromTo('.m-shot',{opacity:0,y:18},{opacity:1,y:0,duration:.7,delay:.15,ease:'power3.out'});
-    document.querySelectorAll('.mk').forEach(el=>{
-      const end=parseFloat(el.dataset.mk),dec=String(el.dataset.mk).includes('.')?1:0;
-      gsap.fromTo(el,{innerText:0},{innerText:end,duration:1.8,delay:.3,ease:'power2.out',
-        snap:dec?false:{innerText:1},
-        onUpdate:function(){if(dec)el.innerText=parseFloat(el.innerText).toFixed(dec);}});
-    });
-    document.querySelectorAll('.md-track i').forEach(b=>{
-      b.style.width='0';
-      setTimeout(()=>{b.style.width=b.dataset.w+'%';},350);
-    });
   }
   const ml=document.getElementById('mLink');
   if(d.url){ml.href=d.url;ml.style.display='inline-block';}else{ml.style.display='none';}
