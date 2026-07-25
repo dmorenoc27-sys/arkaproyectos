@@ -17,7 +17,7 @@
 {"@context":"https://schema.org","@type":"ProfessionalService",
 "name":"Arka Proyectos","legalName":"Arka Proyectos del Perú S.A.C.S.",
 "description":"Consultoría en inversión pública (Invierte.pe), expedientes técnicos, ejecución de obras y soluciones digitales.",
-"telephone":"+51966614682","email":"d.morenoc27@gmail.com",
+"telephone":"+51966614682","email":"dmoreno@arkaproyectos.com.pe",
 "address":{"@type":"PostalAddress","addressLocality":"Lima","addressCountry":"PE"},
 "areaServed":"PE","priceRange":"$$",
 "knowsAbout":["Invierte.pe","Expedientes técnicos","Obras públicas","Dashboards","Desarrollo web"]}
@@ -38,6 +38,7 @@ button{font-family:inherit;cursor:pointer}
 /* ---------- PRELOADER ---------- */
 #preloader{position:fixed;inset:0;background:var(--ink);z-index:1000;display:none;align-items:center;justify-content:center;flex-direction:column}
 .js #preloader{display:flex}
+.pl-mark{width:58px;height:58px;margin-bottom:18px;opacity:0}
 .pl-word{display:flex;overflow:hidden}
 .pl-letter{font-family:'Fraunces',serif;font-size:clamp(60px,12vw,120px);font-weight:600;letter-spacing:.18em;color:var(--cream)}
 .js .pl-letter{transform:translateY(120%)}
@@ -62,7 +63,9 @@ button{font-family:inherit;cursor:pointer}
 /* ---------- CHROME (marco fijo) ---------- */
 header{position:fixed;top:0;left:0;right:0;z-index:120}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:24px clamp(20px,4vw,54px)}
-.brand{display:flex;flex-direction:column;line-height:1;cursor:pointer}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.bmark{width:36px;height:36px;flex-shrink:0}
+.btxt{display:flex;flex-direction:column;line-height:1}
 .brand b{font-family:'Fraunces',serif;font-size:24px;letter-spacing:.35em;color:var(--cream);font-weight:600}
 .brand span{font-size:9px;letter-spacing:.55em;color:var(--gold2);margin-top:3px}
 .menu{display:flex;gap:30px}
@@ -274,6 +277,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 <body>
 
 <div id="preloader">
+  <svg class="pl-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M18 46 L32 16 L46 46" stroke="#C9A85C" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="38" x2="48" y2="38" stroke="#B08D3E" stroke-width="4" stroke-linecap="round"/><polygon points="48,32 58,38 48,44" fill="#B08D3E"/></svg>
   <div class="pl-word"><span class="pl-letter">A</span><span class="pl-letter">R</span><span class="pl-letter">K</span><span class="pl-letter">A</span></div>
   <div class="pl-line"></div>
   <div class="pl-tag"><span>P R O Y E C T O S</span></div>
@@ -287,7 +291,10 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 
 <header>
   <div class="nav">
-    <div class="brand" onclick="go(0)" data-hover><b>ARKA</b><span>PROYECTOS</span></div>
+    <div class="brand" onclick="go(0)" data-hover>
+      <svg class="bmark" viewBox="0 0 64 64" aria-hidden="true"><path d="M18 46 L32 16 L46 46" stroke="#F5F2EA" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="38" x2="48" y2="38" stroke="#B08D3E" stroke-width="4" stroke-linecap="round"/><polygon points="48,32 58,38 48,44" fill="#B08D3E"/></svg>
+      <div class="btxt"><b>ARKA</b><span>PROYECTOS</span></div>
+    </div>
     <nav class="menu">
       <button data-go="0" class="on" data-hover>Inicio</button>
       <button data-go="1" data-hover>Servicios</button>
@@ -412,7 +419,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
       <div>
         <h2 class="title anim">Su proyecto,<br><em>en el blanco.</em></h2>
         <div class="c-info anim">
-          <div class="row"><b>Correo</b><a href="mailto:d.morenoc27@gmail.com" data-hover>d.morenoc27@gmail.com</a><button class="copy" onclick="copyMail(this)" data-hover>copiar</button></div>
+          <div class="row"><b>Correo</b><a href="mailto:dmoreno@arkaproyectos.com.pe" data-hover>dmoreno@arkaproyectos.com.pe</a><button class="copy" onclick="copyMail(this)" data-hover>copiar</button></div>
           <div class="row"><b>WhatsApp</b><a href="https://wa.me/51966614682" target="_blank" rel="noopener" data-hover>+51 966 614 682</a></div>
           <div class="row"><b>Ubicación</b><span>Lima, Perú — alcance nacional</span></div>
           <div class="row"><b>Hora en Lima</b><span><i id="dotv" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4CAF7D;margin-right:9px;vertical-align:middle"></i><span id="limaClock">--:--</span> · <span id="availTxt">Disponibles ahora</span></span></div>
@@ -524,7 +531,9 @@ const scenes=[...document.querySelectorAll('.scene')];
 
 /* ---------- PRELOADER ---------- */
 const pl=gsap.timeline();
-pl.to('.pl-letter',{y:0,duration:.85,stagger:.08,ease:'power4.out',delay:.1})
+pl.to('.pl-mark',{opacity:1,scale:1,duration:.7,ease:'power3.out',delay:.05},0)
+  .fromTo('.pl-mark',{scale:.6,rotate:-12},{scale:1,rotate:0,duration:.7,ease:'back.out(1.6)'},0)
+  .to('.pl-letter',{y:0,duration:.85,stagger:.08,ease:'power4.out',delay:.1})
   .to('.pl-line',{width:'min(46vw,400px)',duration:.6,ease:'power3.inOut'},'-=.3')
   .fromTo('#plN',{innerText:0},{innerText:100,duration:1.4,snap:{innerText:1},ease:'power2.inOut'},'<')
   .to('.pl-tag span',{y:0,duration:.5,ease:'power3.out'},'-=.9')
@@ -768,12 +777,12 @@ function cResumen(){
 }
 document.getElementById('cForm').onsubmit=function(e){e.preventDefault();
   const n=document.getElementById('cName').value,m=document.getElementById('cMail').value,x=document.getElementById('cMsg').value;
-  location.href='mailto:d.morenoc27@gmail.com?subject='+encodeURIComponent('Solicitud de propuesta — '+n)+
+  location.href='mailto:dmoreno@arkaproyectos.com.pe?subject='+encodeURIComponent('Solicitud de propuesta — '+n)+
     '&body='+encodeURIComponent(cResumen()+'\n\nMensaje: '+x+'\n\n— '+n+' ('+m+')');};
 window.sendWsp=function(){
   const n=document.getElementById('cName').value||'',x=document.getElementById('cMsg').value||'';
   window.open('https://wa.me/'+WSP+'?text='+encodeURIComponent('Hola Arka Proyectos, soy '+n+'.\n'+cResumen()+'\nMensaje: '+x),'_blank');};
-window.copyMail=function(btn){navigator.clipboard.writeText('d.morenoc27@gmail.com').then(()=>{
+window.copyMail=function(btn){navigator.clipboard.writeText('dmoreno@arkaproyectos.com.pe').then(()=>{
   btn.textContent='¡copiado!';setTimeout(()=>btn.textContent='copiar',1500);});};
 
 /* ---------- WHATSAPP DIRECTO (app primero, web de respaldo) ---------- */
