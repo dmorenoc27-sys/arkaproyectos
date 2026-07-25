@@ -39,7 +39,9 @@ button{font-family:inherit;cursor:pointer}
 /* ---------- PRELOADER ---------- */
 #preloader{position:fixed;inset:0;background:var(--ink);z-index:1000;display:none;align-items:center;justify-content:center;flex-direction:column}
 .js #preloader{display:flex}
-.pl-logo{width:min(82vw,620px);display:block}
+.pl-logo{width:min(82vw,620px);display:block;opacity:0}
+#plPhase1{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}
+#plLoad{width:min(64vw,520px);overflow:visible}
 
 /* ---------- CURSOR ---------- */
 .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:999;border-radius:50%;transform:translate(-50%,-50%)}
@@ -51,7 +53,7 @@ button{font-family:inherit;cursor:pointer}
 /* ---------- WIPES ---------- */
 #slats{position:fixed;inset:0;z-index:900;display:flex;pointer-events:none}
 .slat{flex:1;background:linear-gradient(180deg,#0F2540,#0A1826);transform:scaleX(0)}
-.pl-pct{margin-top:22px;font-family:'Jost',sans-serif;font-weight:300;font-size:13px;letter-spacing:.4em;color:var(--gray)}
+.pl-pct{font-family:'Jost',sans-serif;font-weight:300;font-size:13px;letter-spacing:.4em;color:var(--gray)}
 .pl-pct b{color:var(--gold2);font-weight:500}
 
 /* ---------- CHROME (marco fijo) ---------- */
@@ -269,12 +271,23 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 <body>
 
 <div id="preloader">
-  <svg id="plLogo" class="pl-logo" viewBox="0 0 920 430" aria-label="ARKA Proyectos">
+  <div id="plPhase1">
+    <svg id="plLoad" viewBox="0 0 600 60" aria-hidden="true">
+      <line x1="0" y1="30" x2="600" y2="30" stroke="rgba(245,242,234,.13)" stroke-width="2"/>
+      <line id="plDone" x1="0" y1="30" x2="0" y2="30" stroke="#C9A85C" stroke-width="2.5"/>
+      <g id="plLoadArr">
+        <line x1="-40" y1="30" x2="-8" y2="30" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
+        <polygon points="-10,21 9,30 -10,39 -6,30" fill="#C9A85C"/>
+      </g>
+    </svg>
+    <div class="pl-pct">CARGANDO <b id="plN">0</b>%</div>
+  </div>
+  <svg id="plLogo" class="pl-logo" viewBox="0 0 980 430" aria-label="ARKA Proyectos">
   <g id="plWord" fill="#F5F2EA">
-    <g><path d="M170 112 L96 290 L130 290 L170 171 L210 290 L244 290 Z"/></g>
-    <g><path fill-rule="evenodd" d="M330 112 L395 112 Q448 112 448 163 Q448 202 413 213 L452 290 L419 290 L382 218 L357 218 L357 290 L330 290 Z M357 139 L393 139 Q421 139 421 164 Q421 191 393 191 L357 191 Z"/></g>
-    <g><path d="M505 112 L532 112 L532 190 L607 112 L642 112 L563 193 L643 290 L609 290 L541 211 L532 220 L532 290 L505 290 Z"/></g>
-    <g><path d="M749 112 L675 290 L709 290 L749 171 L789 290 L823 290 Z"/><polygon points="749,232 720,282 778,282" fill="#C9A85C"/></g>
+    <g><path d="M170 112 L102 290 L128 290 L170 176 L212 290 L238 290 Z"/></g>
+    <g><text x="320" y="290" font-family="Jost, Helvetica, Arial, sans-serif" font-weight="600" font-size="250" textLength="150" lengthAdjust="spacingAndGlyphs">R</text></g>
+    <g><text x="540" y="290" font-family="Jost, Helvetica, Arial, sans-serif" font-weight="600" font-size="250" textLength="155" lengthAdjust="spacingAndGlyphs">K</text></g>
+    <g><path d="M813 112 L745 290 L771 290 L813 176 L855 290 L881 290 Z"/><polygon points="813,235 784,282 842,282" fill="#C9A85C"/></g>
   </g>
   <g id="plArrow">
     <g stroke="#C9A85C" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -284,12 +297,11 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
     <polygon points="259,185 302,200 259,215 267,200" fill="#C9A85C"/>
   </g>
   <g id="plProy">
-    <text x="460" y="386" text-anchor="middle" font-family="Jost, Helvetica, Arial, sans-serif" font-size="36" font-weight="500" letter-spacing="27" fill="#C9A85C">PROYECTOS</text>
-    <line x1="96" y1="374" x2="190" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
-    <line x1="729" y1="374" x2="823" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
+    <text x="492" y="386" text-anchor="middle" font-family="Jost, Helvetica, Arial, sans-serif" font-size="36" font-weight="500" letter-spacing="27" fill="#C9A85C">PROYECTOS</text>
+    <line x1="102" y1="374" x2="200" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
+    <line x1="783" y1="374" x2="881" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
   </g>
 </svg>
-  <div class="pl-pct">CARGANDO <b id="plN">0</b>%</div>
 </div>
 
 <div class="cursor-dot"></div><div class="cursor-ring"></div>
@@ -300,12 +312,12 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 <header>
   <div class="nav">
     <div class="brand" onclick="go(0)" data-hover>
-      <svg class="blogo" viewBox="0 0 920 430" aria-label="ARKA Proyectos">
+      <svg class="blogo" viewBox="0 0 980 430" aria-label="ARKA Proyectos">
   <g fill="#F5F2EA">
-    <g><path d="M170 112 L96 290 L130 290 L170 171 L210 290 L244 290 Z"/></g>
-    <g><path fill-rule="evenodd" d="M330 112 L395 112 Q448 112 448 163 Q448 202 413 213 L452 290 L419 290 L382 218 L357 218 L357 290 L330 290 Z M357 139 L393 139 Q421 139 421 164 Q421 191 393 191 L357 191 Z"/></g>
-    <g><path d="M505 112 L532 112 L532 190 L607 112 L642 112 L563 193 L643 290 L609 290 L541 211 L532 220 L532 290 L505 290 Z"/></g>
-    <g><path d="M749 112 L675 290 L709 290 L749 171 L789 290 L823 290 Z"/><polygon points="749,232 720,282 778,282" fill="#C9A85C"/></g>
+    <g><path d="M170 112 L102 290 L128 290 L170 176 L212 290 L238 290 Z"/></g>
+    <g><text x="320" y="290" font-family="Jost, Helvetica, Arial, sans-serif" font-weight="600" font-size="250" textLength="150" lengthAdjust="spacingAndGlyphs">R</text></g>
+    <g><text x="540" y="290" font-family="Jost, Helvetica, Arial, sans-serif" font-weight="600" font-size="250" textLength="155" lengthAdjust="spacingAndGlyphs">K</text></g>
+    <g><path d="M813 112 L745 290 L771 290 L813 176 L855 290 L881 290 Z"/><polygon points="813,235 784,282 842,282" fill="#C9A85C"/></g>
   </g>
   <g>
     <g stroke="#C9A85C" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -315,9 +327,9 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
     <polygon points="259,185 302,200 259,215 267,200" fill="#C9A85C"/>
   </g>
   <g>
-    <text x="460" y="386" text-anchor="middle" font-family="Jost, Helvetica, Arial, sans-serif" font-size="36" font-weight="500" letter-spacing="27" fill="#C9A85C">PROYECTOS</text>
-    <line x1="96" y1="374" x2="190" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
-    <line x1="729" y1="374" x2="823" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
+    <text x="492" y="386" text-anchor="middle" font-family="Jost, Helvetica, Arial, sans-serif" font-size="36" font-weight="500" letter-spacing="27" fill="#C9A85C">PROYECTOS</text>
+    <line x1="102" y1="374" x2="200" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
+    <line x1="783" y1="374" x2="881" y2="374" stroke="#C9A85C" stroke-width="4" stroke-linecap="round"/>
   </g>
 </svg>
     </div>
@@ -557,17 +569,22 @@ const scenes=[...document.querySelectorAll('.scene')];
 
 /* ---------- PRELOADER ---------- */
 const pl=gsap.timeline();
-pl.from('#plWord g',{y:74,opacity:0,duration:.85,stagger:.16,ease:'power3.out',delay:.25},0)
-  .fromTo('#plArrow',{x:-480},{x:0,duration:1.3,ease:'power2.in'},'+=.12')
+pl.to('#plLoadArr',{x:562,duration:1.7,ease:'power1.inOut',delay:.2},0)
+  .to('#plDone',{attr:{x2:562},duration:1.7,ease:'power1.inOut'},'<')
+  .fromTo('#plN',{innerText:0},{innerText:100,duration:1.7,snap:{innerText:1},ease:'power1.inOut'},'<')
+  .to('#plLoadArr',{x:820,opacity:0,duration:.32,ease:'power2.in'})
+  .to('#plPhase1',{opacity:0,duration:.35},'-=.15')
+  .set('#plLogo',{opacity:1})
+  .from('#plWord g',{y:74,opacity:0,duration:.8,stagger:.15,ease:'power3.out'})
+  .fromTo('#plArrow',{x:-520},{x:0,duration:1.15,ease:'power2.in'},'+=.05')
   .to('#plLogo',{x:8,duration:.06,ease:'power1.out'})
   .to('#plLogo',{x:0,duration:.5,ease:'elastic.out(1,.32)'})
-  .from('#plProy',{opacity:0,y:16,duration:.65,ease:'power3.out'},'-=.3')
-  .fromTo('#plN',{innerText:0},{innerText:100,duration:1.3,snap:{innerText:1},ease:'power2.inOut'},'-=1.1')
-  .to('#preloader',{yPercent:-100,duration:.85,ease:'power4.inOut',delay:.3})
+  .from('#plProy',{opacity:0,y:16,duration:.6,ease:'power3.out'},'-=.3')
+  .to('#preloader',{yPercent:-100,duration:.85,ease:'power4.inOut',delay:.4})
   .set('#preloader',{display:'none'})
   .add(()=>entrance(0),'-=.5');
-setTimeout(function(){var p=document.getElementById('preloader');
-  if(p&&getComputedStyle(p).display!=='none'&&p.getBoundingClientRect().top===0){p.remove();document.documentElement.classList.remove('js');}},6000);
+setTimeout(function(){if(typeof gsap==='undefined'){var p=document.getElementById('preloader');
+  if(p)p.remove();document.documentElement.classList.remove('js');}},6000);
 
 /* ---------- NAVEGACIÓN POR ESCENAS ---------- */
 window.cur=0;let busy=false;
