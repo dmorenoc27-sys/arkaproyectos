@@ -40,7 +40,7 @@ button{font-family:inherit;cursor:pointer}
 #preloader{position:fixed;inset:0;background:var(--ink);z-index:1000;display:none;align-items:center;justify-content:center;flex-direction:column}
 .js #preloader{display:flex}
 .pl-logo{width:min(82vw,620px);display:block}
-.pl-pct{margin-top:26px}
+.pl-pct{margin-top:calc(min(82vw,620px) * -0.205)}
 
 /* ---------- CURSOR ---------- */
 .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:999;border-radius:50%;transform:translate(-50%,-50%)}
@@ -571,7 +571,7 @@ pl.to('#plLoadArr',{x:918,duration:1.6,ease:'power1.inOut',delay:.2},0)
   .to('.pl-pct',{opacity:0,duration:.35},'<')
   .to('#plDone',{opacity:0,duration:.5},'<')
   .to('#plTrack',{opacity:0,duration:.5},'<')
-  .fromTo('#plWord g',{y:74,opacity:0},{y:0,opacity:1,duration:.75,stagger:.14,ease:'power3.out'},'-=.15')
+  .fromTo('#plWord g',{y:74,opacity:0},{y:0,opacity:1,duration:.75,stagger:.14,ease:'power3.out'},'+=.02')
   .set('#plWord',{opacity:1},'<')
   .fromTo('#plArrow',{x:-520,opacity:1},{x:0,duration:1.1,ease:'power2.in'},'-=.05')
   .to('#plLogo',{x:8,duration:.06,ease:'power1.out'})
