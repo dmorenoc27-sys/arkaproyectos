@@ -15,6 +15,7 @@
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService",
+"logo":"https://www.arkaproyectos.com.pe/arka-logo.jpg","image":"https://www.arkaproyectos.com.pe/arka-logo.jpg",
 "name":"Arka Proyectos","legalName":"Arka Proyectos del Perú S.A.C.S.",
 "description":"Consultoría en inversión pública (Invierte.pe), expedientes técnicos, ejecución de obras y soluciones digitales.",
 "telephone":"+51966614682","email":"consultas@arkaproyectos.com.pe",
@@ -38,14 +39,8 @@ button{font-family:inherit;cursor:pointer}
 /* ---------- PRELOADER ---------- */
 #preloader{position:fixed;inset:0;background:var(--ink);z-index:1000;display:none;align-items:center;justify-content:center;flex-direction:column}
 .js #preloader{display:flex}
-.pl-mark{width:58px;height:58px;margin-bottom:18px;opacity:0}
-.pl-word{display:flex;overflow:hidden}
-.pl-letter{font-family:'Fraunces',serif;font-size:clamp(60px,12vw,120px);font-weight:600;letter-spacing:.18em;color:var(--cream)}
-.js .pl-letter{transform:translateY(120%)}
-.pl-line{width:0;height:2px;background:var(--gold);margin-top:8px}
-.pl-tag{overflow:hidden;margin-top:14px}
-.pl-tag span{display:block;font-size:12px;letter-spacing:.6em;color:var(--gold2)}
-.js .pl-tag span{transform:translateY(110%)}
+.pl-card{width:min(76vw,480px);opacity:0;border-radius:16px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.55)}
+.pl-card img{width:100%;display:block}
 
 /* ---------- CURSOR ---------- */
 .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:999;border-radius:50%;transform:translate(-50%,-50%)}
@@ -64,10 +59,7 @@ button{font-family:inherit;cursor:pointer}
 header{position:fixed;top:0;left:0;right:0;z-index:120}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:24px clamp(20px,4vw,54px)}
 .brand{display:flex;align-items:center;gap:12px;cursor:pointer}
-.bmark{width:36px;height:36px;flex-shrink:0}
-.btxt{display:flex;flex-direction:column;line-height:1}
-.brand b{font-family:'Fraunces',serif;font-size:24px;letter-spacing:.35em;color:var(--cream);font-weight:600}
-.brand span{font-size:9px;letter-spacing:.55em;color:var(--gold2);margin-top:3px}
+.blogo{height:54px;width:auto;border-radius:10px;display:block;box-shadow:0 4px 20px rgba(0,0,0,.4)}
 .menu{display:flex;gap:30px}
 .menu button{background:none;border:none;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);transition:color .3s;padding:4px 0;position:relative}
 .menu button.on,.menu button:hover{color:var(--cream)}
@@ -259,7 +251,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 @media(max-width:860px){
   header{background:linear-gradient(180deg,rgba(6,13,23,.96) 55%,rgba(6,13,23,0));backdrop-filter:blur(6px)}
   .nav{padding:16px 20px}
-  .brand b{font-size:20px}
+  .blogo{height:42px}
   .dots{display:none}
   .hint{display:none}
   .hud{left:16px;bottom:16px;gap:8px}
@@ -278,10 +270,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 <body>
 
 <div id="preloader">
-  <svg class="pl-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M13 51 L32 11 L51 51" stroke="#C9A85C" stroke-width="4.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 32 L8.5 37 M3 42 L8.5 37 M9 32 L14.5 37 M9 42 L14.5 37" stroke="#B08D3E" stroke-width="2.8" fill="none" stroke-linecap="round"/><line x1="6" y1="37" x2="52" y2="37" stroke="#B08D3E" stroke-width="3.6" stroke-linecap="round"/><polygon points="50,30.5 61,37 50,43.5 52.2,37" fill="#B08D3E"/></svg>
-  <div class="pl-word"><span class="pl-letter">A</span><span class="pl-letter">R</span><span class="pl-letter">K</span><span class="pl-letter">A</span></div>
-  <div class="pl-line"></div>
-  <div class="pl-tag"><span>P R O Y E C T O S</span></div>
+  <div class="pl-card"><img src="arka-logo.jpg" alt="Arka Proyectos"></div>
   <div class="pl-pct">CARGANDO <b id="plN">0</b>%</div>
 </div>
 
@@ -293,8 +282,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 <header>
   <div class="nav">
     <div class="brand" onclick="go(0)" data-hover>
-      <svg class="bmark" viewBox="0 0 64 64" aria-hidden="true"><path d="M13 51 L32 11 L51 51" stroke="#F5F2EA" stroke-width="4.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 32 L8.5 37 M3 42 L8.5 37 M9 32 L14.5 37 M9 42 L14.5 37" stroke="#B08D3E" stroke-width="2.8" fill="none" stroke-linecap="round"/><line x1="6" y1="37" x2="52" y2="37" stroke="#B08D3E" stroke-width="3.6" stroke-linecap="round"/><polygon points="50,30.5 61,37 50,43.5 52.2,37" fill="#B08D3E"/></svg>
-      <div class="btxt"><b>ARKA</b><span>PROYECTOS</span></div>
+      <img class="blogo" src="arka-logo.jpg" alt="ARKA Proyectos">
     </div>
     <nav class="menu">
       <button data-go="0" class="on" data-hover>Inicio</button>
@@ -532,12 +520,8 @@ const scenes=[...document.querySelectorAll('.scene')];
 
 /* ---------- PRELOADER ---------- */
 const pl=gsap.timeline();
-pl.to('.pl-mark',{opacity:1,scale:1,duration:.7,ease:'power3.out',delay:.05},0)
-  .fromTo('.pl-mark',{scale:.6,rotate:-12},{scale:1,rotate:0,duration:.7,ease:'back.out(1.6)'},0)
-  .to('.pl-letter',{y:0,duration:.85,stagger:.08,ease:'power4.out',delay:.1})
-  .to('.pl-line',{width:'min(46vw,400px)',duration:.6,ease:'power3.inOut'},'-=.3')
-  .fromTo('#plN',{innerText:0},{innerText:100,duration:1.4,snap:{innerText:1},ease:'power2.inOut'},'<')
-  .to('.pl-tag span',{y:0,duration:.5,ease:'power3.out'},'-=.9')
+pl.fromTo('.pl-card',{opacity:0,scale:.9,y:16},{opacity:1,scale:1,y:0,duration:.95,ease:'power3.out',delay:.1},0)
+  .fromTo('#plN',{innerText:0},{innerText:100,duration:1.4,snap:{innerText:1},ease:'power2.inOut'},'-=.45')
   .to('#preloader',{yPercent:-100,duration:.85,ease:'power4.inOut',delay:.25})
   .set('#preloader',{display:'none'})
   .add(()=>entrance(0),'-=.5');
