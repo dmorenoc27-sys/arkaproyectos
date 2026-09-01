@@ -25,9 +25,9 @@
 </script>
 <style>
 :root{
-  --navy:#1A1D22; --navy2:#252930; --ink:#1E2026;
-  --gold:#9E8038; --gold2:#D2B168; --cream:#F5F2EA;
-  --gray:#B3BBC7; --line:rgba(176,141,62,.28);
+  --navy:#292E36; --navy2:#333A44; --ink:#31333C;
+  --gold:#9E8038; --gold2:#E0C078; --cream:#F5F2EA;
+  --gray:#C6CCD6; --line:rgba(176,141,62,.28);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Jost',sans-serif;background:var(--navy);color:var(--cream);line-height:1.7}
@@ -95,7 +95,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:120}
 @media(max-width:860px){.scene{padding-left:24px;padding-right:24px}}
 .js .scene{position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none;overflow-y:auto;overflow-x:hidden}
 .scn-vid{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.scn-vid video{width:100%;height:100%;object-fit:cover;opacity:.65}
+.scn-vid video{width:100%;height:100%;object-fit:cover;opacity:.85}
 .scn-vid::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,20,.50),rgba(10,14,20,.78))}
 .scene>*:not(.scn-vid){position:relative;z-index:1}
 .js .scene.active{opacity:1;visibility:visible;pointer-events:auto}
@@ -108,7 +108,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 
 /* Escena 1 — Inicio */
 #s0{overflow:hidden}
-#bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.61;filter:saturate(.7)}
+#bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.80;filter:saturate(.7)}
 #stars{position:absolute;inset:0;width:100%;height:100%}
 #s0::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 90% at 30% 20%,transparent 30%,rgba(8,19,34,.88) 100%)}
 #s0 .inner{position:relative;z-index:2}
@@ -174,7 +174,7 @@ h2.title{font-size:clamp(28px,3.6vw,48px)!important}
 
 /* ---------- SERVICIOS: VISTA DE IMPACTO ---------- */
 .svc-bg{position:absolute;inset:0;overflow:hidden}
-.svc-bg img{width:100%;height:100%;object-fit:cover;opacity:.44;filter:saturate(.7);transform:scale(1.06);animation:kb 16s ease-in-out infinite alternate}
+.svc-bg img{width:100%;height:100%;object-fit:cover;opacity:.60;filter:saturate(.7);transform:scale(1.06);animation:kb 16s ease-in-out infinite alternate}
 @keyframes kb{to{transform:scale(1.15) translateY(-14px)}}
 .svc-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,13,16,.93) 22%,rgba(11,13,16,.55) 60%,rgba(11,13,16,.85))}
 .svc-num{position:absolute;right:3vw;bottom:0;font-family:'Fraunces',serif;font-size:clamp(160px,25vw,360px);font-weight:600;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(176,141,62,.28);pointer-events:none;user-select:none;z-index:1}
@@ -781,7 +781,7 @@ function pick(i){
   document.querySelectorAll('.svc-list button').forEach((b,j)=>b.classList.toggle('on',j===i));
   const view=document.querySelector('.svc-view'),bg=document.getElementById('svcBg');view.classList.add('show');
   gsap.to(bg,{opacity:0,duration:.35,ease:'power2.in',onComplete:()=>{
-    bg.src=SVC[i].img;gsap.to(bg,{opacity:.44,duration:.7,ease:'power2.out'});}});
+    bg.src=SVC[i].img;gsap.to(bg,{opacity:.60,duration:.7,ease:'power2.out'});}});
   gsap.to(view,{opacity:0,y:14,duration:.22,ease:'power2.in',onComplete:()=>{
     document.getElementById('svcImg').src=SVC[i].img;
     document.getElementById('svcTitle').textContent=SVC[i].t;
