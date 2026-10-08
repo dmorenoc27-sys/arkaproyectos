@@ -44,7 +44,7 @@ button.btn{margin-top:22px;background:var(--gold);color:#101820;border:0;border-
 <h1>Libro de <em>Reclamaciones</em></h1>
 <div class="fecha">Hoja de Reclamación virtual · Conforme al Código de Protección y Defensa del Consumidor (Ley N.° 29571) y al Reglamento del Libro de Reclamaciones (D.S. N.° 011-2011-PCM y modificatorias)</div>
 
-<div class="card"><p><b>ARKA PROYECTOS DEL PERÚ S.A.C.S.</b> · RUC 20616297873 · Lima, Perú</p></div>
+<div class="card"><p><b>ARKA PROYECTOS DEL PERÚ S.A.C.S.</b> · RUC 20616297873<br>Av. Arequipa N° 1421, Dpto. 2006, Santa Beatriz, Cercado de Lima, Lima, Perú</p></div>
 
 <form id="lr" onsubmit="return enviarLR(event)">
 <h2>1. Identificación del consumidor</h2>
@@ -75,10 +75,22 @@ button.btn{margin-top:22px;background:var(--gold);color:#101820;border:0;border-
 <label>Detalle *</label><textarea id="lDet" required></textarea>
 <label>Pedido del consumidor *</label><textarea id="lPed" required></textarea>
 
-<p class="aviso" style="margin-top:20px">Al enviar, se abrirá su programa de correo con la hoja completa dirigida a consultas@arkaproyectos.com.pe; el envío de ese correo registra su reclamación y usted conserva copia en su bandeja de enviados. También puede descargar su copia con el botón "Descargar hoja".</p>
-<button class="btn" type="submit">Enviar reclamación</button>
-<button class="btn" type="button" style="background:transparent;border:1px solid var(--gold);color:var(--gold2)" onclick="descargarLR()">Descargar hoja</button>
+<input id="lWeb" name="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+<label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--gray);margin-top:18px"><input id="lConf" type="checkbox" required style="width:auto;margin-top:4px;accent-color:var(--gold)"><span>Declaro que los datos consignados son verdaderos. Este registro electrónico reemplaza mi firma. Mis datos se usarán solo para atender esta reclamación (<a href="/privacidad.html">Política de Privacidad</a>).</span></label>
+<p class="aviso" style="margin-top:14px">Al registrar, su hoja recibe un número correlativo y le llega de inmediato en PDF a su correo, con copia a nuestra área de reclamos. Responderemos en un plazo no mayor de quince (15) días hábiles improrrogables.</p>
+<p class="aviso" id="lrError" style="display:none;border-color:#c0392b;color:#e4a9a1"></p>
+<button class="btn" type="submit" id="btnLR">Registrar mi Hoja de Reclamación</button>
 </form>
+
+<div id="lrOK" style="display:none">
+<div class="card"><h2 style="margin-top:0">Hoja registrada</h2>
+<p style="font-family:'Fraunces',serif;font-size:26px;color:var(--gold2);margin:4px 0" id="okNum"></p>
+<p id="okFecha" class="fecha" style="margin-bottom:12px"></p>
+<div id="okResumen" style="font-size:14.5px"></div>
+<p style="margin-top:14px">Le enviamos su Hoja de Reclamación en PDF a <b id="okMail"></b> (revise también el correo no deseado). Responderemos como máximo en quince (15) días hábiles improrrogables.</p>
+<button class="btn" type="button" onclick="window.print()">Imprimir esta constancia</button>
+<button class="btn" type="button" style="background:transparent;border:1px solid var(--gold);color:var(--gold2)" onclick="location.reload()">Registrar otra hoja</button>
+</div></div>
 
 <h2>Información importante</h2>
 <ul>
@@ -91,24 +103,42 @@ button.btn{margin-top:22px;background:var(--gold);color:#101820;border:0;border-
 <footer>ARKA PROYECTOS DEL PERÚ S.A.C.S. · RUC 20616297873 · Lima, Perú · consultas@arkaproyectos.com.pe · +51 966 614 682<br>
 <a href="/terminos.html">Aviso legal</a> · <a href="/privacidad.html">Privacidad</a> · <a href="/libro-de-reclamaciones.html">Libro de Reclamaciones</a> · © 2026</footer>
 <script>
-function hojaLR(){
-  var v=function(i){var e=document.getElementById(i);return e?e.value.trim():""};
-  var cod="REC-"+new Date().toISOString().replace(/[-:T]/g,"").slice(0,14);
-  return {cod:cod, txt:
-"HOJA DE RECLAMACIÓN "+cod+"\n"+
-"ARKA PROYECTOS DEL PERÚ S.A.C.S. · RUC 20616297873 · Lima, Perú\n"+
-"Fecha de registro: "+new Date().toLocaleString("es-PE")+"\n\n"+
-"1. CONSUMIDOR\nNombre: "+v("lNom")+"\nDocumento: "+v("lDoc")+"\nDomicilio: "+v("lDom")+
-"\nTeléfono: "+v("lTel")+"\nCorreo: "+v("lMail")+(v("lPad")?"\nPadre/madre/apoderado: "+v("lPad"):"")+"\n\n"+
-"2. BIEN CONTRATADO\nTipo: "+v("lTipoB")+"\nDescripción: "+v("lDescB")+(v("lMonto")?"\nMonto reclamado: S/ "+v("lMonto"):"")+"\n\n"+
-"3. DETALLE\nTipo: "+v("lTipoR")+(v("lFecha")?"\nFecha del hecho: "+v("lFecha"):"")+
-"\nDetalle: "+v("lDet")+"\nPedido: "+v("lPed")+"\n\n"+
-"La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante el INDECOPI. Plazo de respuesta: 15 días hábiles."};
+const LIBRO_URL = 'https://script.google.com/macros/s/AKfycbwgbgbVnUtQJmh2mhs1b-RyvJyKDBIcHANXQ-DlZVohoHJZ4qVLsrddVg0T5_emrVlX/exec';
+const escq = t => String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function enviarLR(e){
+  e.preventDefault();
+  const v=i=>{const x=document.getElementById(i);return x?x.value.trim():""};
+  const err=document.getElementById('lrError'), btn=document.getElementById('btnLR');
+  const d={nombre:v('lNom'),documento:v('lDoc'),domicilio:v('lDom'),telefono:v('lTel'),correo:v('lMail'),
+    menor:!!v('lPad'),apNombre:v('lPad'),apDomicilio:'',apTelefono:'',apCorreo:'',
+    bien:v('lTipoB'),monto:v('lMonto'),descripcion:v('lDescB'),
+    tipo:(v('lTipoR')==='Queja'?'QUEJA':'RECLAMO'),
+    detalle:(v('lFecha')?('Fecha del hecho: '+v('lFecha')+'. '):'')+v('lDet'),
+    pedido:v('lPed'),conforme:document.getElementById('lConf').checked,web:v('lWeb')};
+  err.style.display='none'; btn.disabled=true; const t0=btn.textContent; btn.textContent='Registrando su hoja…';
+  let r=null;
+  try{
+    if(!LIBRO_URL) throw new Error('sin servidor');
+    const resp=await fetch(LIBRO_URL,{method:'POST',body:JSON.stringify(d),headers:{'Content-Type':'text/plain;charset=utf-8'}});
+    r=await resp.json();
+  }catch(_){ r=null; }
+  btn.disabled=false; btn.textContent=t0;
+  if(!r||!r.ok){
+    err.textContent = (r&&r.error==='faltan') ? 'Faltan datos obligatorios. Revise los campos marcados con *.' :
+      'No pudimos registrar su hoja en este momento. Inténtelo de nuevo en unos minutos o escríbanos a reclamos@arkaproyectos.com.pe o al +51 966 614 682.';
+    err.style.display='block'; return false;
+  }
+  document.getElementById('okNum').textContent='N° '+r.numero;
+  document.getElementById('okFecha').textContent='Fecha de registro: '+r.fecha;
+  document.getElementById('okMail').textContent=d.correo;
+  document.getElementById('okResumen').innerHTML=
+    '<b>'+(d.tipo==='QUEJA'?'Queja':'Reclamo')+'</b> de '+escq(d.nombre)+' (doc. '+escq(d.documento)+')<br>'+
+    '<b>Bien contratado:</b> '+escq(d.bien)+' — '+escq(d.descripcion)+(d.monto?(' · S/ '+escq(d.monto)):'')+'<br>'+
+    '<b>Detalle:</b> '+escq(d.detalle)+'<br><b>Pedido:</b> '+escq(d.pedido);
+  document.getElementById('lr').style.display='none';
+  document.getElementById('lrOK').style.display='block';
+  window.scrollTo({top:0});
+  return false;
 }
-function enviarLR(e){e.preventDefault();var h=hojaLR();
-  location.href="mailto:consultas@arkaproyectos.com.pe?subject="+encodeURIComponent("Libro de Reclamaciones — "+h.cod)+"&body="+encodeURIComponent(h.txt);
-  return false;}
-function descargarLR(){var h=hojaLR();var b=new Blob([h.txt],{type:"text/plain;charset=utf-8"});
-  var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="Hoja_Reclamacion_"+h.cod+".txt";a.click();}
 </script>
 </body></html>
