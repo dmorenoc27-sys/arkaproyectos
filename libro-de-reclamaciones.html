@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,follow">
+<title>Libro de Reclamaciones — ARKA PROYECTOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0F1C2B;--panel:#16263A;--panel2:#1E3048;--cream:#F2E9D8;--gray:#A8B4C2;--gold:#C9A227;--gold2:#D9B45B;--line:rgba(217,180,91,.22)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--cream);font-family:'Jost',system-ui,sans-serif;font-weight:300;line-height:1.75;font-size:16px}
+header{border-bottom:1px solid var(--line);padding:22px 6vw;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header .mono{width:38px;height:38px;border:1px solid var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;color:var(--gold2);font-size:20px}
+header b{font-weight:500;letter-spacing:.14em;font-size:14px}
+header a{margin-left:auto;color:var(--gold2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:7px 14px;border-radius:999px}
+main{max-width:860px;margin:0 auto;padding:48px 6vw 80px}
+h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,40px);line-height:1.15;margin-bottom:8px}
+h1 em{font-style:italic;color:var(--gold2)}
+.fecha{color:var(--gray);font-size:13px;margin-bottom:34px}
+h2{font-family:'Fraunces',serif;font-weight:600;font-size:21px;color:var(--gold2);margin:36px 0 10px}
+p,li{color:#D9DDE3;font-size:15.5px}
+ul{padding-left:22px;margin:8px 0}
+li{margin:6px 0}
+b{font-weight:500;color:var(--cream)}
+a{color:var(--gold2)}
+.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:22px 26px;margin:16px 0}
+footer{border-top:1px solid var(--line);padding:26px 6vw;color:var(--gray);font-size:12.5px;text-align:center}
+footer a{color:var(--gold2);text-decoration:none}
+label{display:block;font-size:13px;color:var(--gray);margin:14px 0 4px}
+input,select,textarea{width:100%;background:#0D1826;border:1px solid var(--line);border-radius:8px;color:var(--cream);padding:11px 13px;font-family:inherit;font-size:15px}
+textarea{min-height:110px;resize:vertical}
+button.btn{margin-top:22px;background:var(--gold);color:#101820;border:0;border-radius:999px;padding:13px 30px;font-family:'Jost';font-weight:500;letter-spacing:.06em;font-size:15px;cursor:pointer}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+@media(max-width:640px){.dos{grid-template-columns:1fr}}
+.aviso{font-size:13px;color:var(--gray);border-left:2px solid var(--gold);padding-left:14px;margin-top:18px}
+@media print{body{background:#fff;color:#000}p,li{color:#000}header a,button.btn{display:none}}
+</style>
+</head>
+<body>
+<header><div class="mono">A</div><b>ARKA&nbsp;PROYECTOS</b><a href="/">← Volver al sitio</a></header>
+<main>
+
+<h1>Libro de <em>Reclamaciones</em></h1>
+<div class="fecha">Hoja de Reclamación virtual · Conforme al Código de Protección y Defensa del Consumidor (Ley N.° 29571) y al Reglamento del Libro de Reclamaciones (D.S. N.° 011-2011-PCM y modificatorias)</div>
+
+<div class="card"><p><b>ARKA PROYECTOS DEL PERÚ S.A.C.S.</b> · RUC 20616297873 · Lima, Perú</p></div>
+
+<form id="lr" onsubmit="return enviarLR(event)">
+<h2>1. Identificación del consumidor</h2>
+<div class="dos">
+<div><label>Nombre completo *</label><input id="lNom" required></div>
+<div><label>Documento de identidad (DNI / CE) *</label><input id="lDoc" required></div>
+<div><label>Domicilio *</label><input id="lDom" required></div>
+<div><label>Teléfono</label><input id="lTel"></div>
+<div><label>Correo electrónico *</label><input id="lMail" type="email" required></div>
+<div><label>Padre, madre o apoderado (si es menor de edad)</label><input id="lPad"></div>
+</div>
+
+<h2>2. Identificación del bien contratado</h2>
+<div class="dos">
+<div><label>Tipo *</label><select id="lTipoB" required><option value="Servicio">Servicio</option><option value="Producto">Producto</option></select></div>
+<div><label>Monto reclamado (S/)</label><input id="lMonto"></div>
+</div>
+<label>Descripción del servicio o producto *</label><input id="lDescB" required>
+
+<h2>3. Detalle de la reclamación</h2>
+<div class="dos">
+<div><label>Tipo *</label><select id="lTipoR" required>
+<option value="Reclamo">RECLAMO (disconformidad con el servicio o producto)</option>
+<option value="Queja">QUEJA (malestar respecto de la atención)</option>
+</select></div>
+<div><label>Fecha del hecho</label><input id="lFecha" type="date"></div>
+</div>
+<label>Detalle *</label><textarea id="lDet" required></textarea>
+<label>Pedido del consumidor *</label><textarea id="lPed" required></textarea>
+
+<p class="aviso" style="margin-top:20px">Al enviar, se abrirá su programa de correo con la hoja completa dirigida a consultas@arkaproyectos.com.pe; el envío de ese correo registra su reclamación y usted conserva copia en su bandeja de enviados. También puede descargar su copia con el botón "Descargar hoja".</p>
+<button class="btn" type="submit">Enviar reclamación</button>
+<button class="btn" type="button" style="background:transparent;border:1px solid var(--gold);color:var(--gold2)" onclick="descargarLR()">Descargar hoja</button>
+</form>
+
+<h2>Información importante</h2>
+<ul>
+<li>RECLAMO: disconformidad relacionada con los productos o servicios. QUEJA: disconformidad no relacionada con ellos, o malestar respecto de la atención al público.</li>
+<li>La formulación del reclamo <b>no impide acudir a otras vías de solución de controversias</b> ni es requisito previo para interponer una denuncia ante el INDECOPI.</li>
+<li>El proveedor debe dar respuesta al reclamo o queja en un plazo no mayor de <b>quince (15) días hábiles</b>, conforme a la normativa vigente.</li>
+</ul>
+
+</main>
+<footer>ARKA PROYECTOS DEL PERÚ S.A.C.S. · RUC 20616297873 · Lima, Perú · consultas@arkaproyectos.com.pe · +51 966 614 682<br>
+<a href="/terminos.html">Aviso legal</a> · <a href="/privacidad.html">Privacidad</a> · <a href="/libro-de-reclamaciones.html">Libro de Reclamaciones</a> · © 2026</footer>
+<script>
+function hojaLR(){
+  var v=function(i){var e=document.getElementById(i);return e?e.value.trim():""};
+  var cod="REC-"+new Date().toISOString().replace(/[-:T]/g,"").slice(0,14);
+  return {cod:cod, txt:
+"HOJA DE RECLAMACIÓN "+cod+"\n"+
+"ARKA PROYECTOS DEL PERÚ S.A.C.S. · RUC 20616297873 · Lima, Perú\n"+
+"Fecha de registro: "+new Date().toLocaleString("es-PE")+"\n\n"+
+"1. CONSUMIDOR\nNombre: "+v("lNom")+"\nDocumento: "+v("lDoc")+"\nDomicilio: "+v("lDom")+
+"\nTeléfono: "+v("lTel")+"\nCorreo: "+v("lMail")+(v("lPad")?"\nPadre/madre/apoderado: "+v("lPad"):"")+"\n\n"+
+"2. BIEN CONTRATADO\nTipo: "+v("lTipoB")+"\nDescripción: "+v("lDescB")+(v("lMonto")?"\nMonto reclamado: S/ "+v("lMonto"):"")+"\n\n"+
+"3. DETALLE\nTipo: "+v("lTipoR")+(v("lFecha")?"\nFecha del hecho: "+v("lFecha"):"")+
+"\nDetalle: "+v("lDet")+"\nPedido: "+v("lPed")+"\n\n"+
+"La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante el INDECOPI. Plazo de respuesta: 15 días hábiles."};
+}
+function enviarLR(e){e.preventDefault();var h=hojaLR();
+  location.href="mailto:consultas@arkaproyectos.com.pe?subject="+encodeURIComponent("Libro de Reclamaciones — "+h.cod)+"&body="+encodeURIComponent(h.txt);
+  return false;}
+function descargarLR(){var h=hojaLR();var b=new Blob([h.txt],{type:"text/plain;charset=utf-8"});
+  var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="Hoja_Reclamacion_"+h.cod+".txt";a.click();}
+</script>
+</body></html>
