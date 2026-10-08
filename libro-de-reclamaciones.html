@@ -2,143 +2,236 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex,follow">
 <title>Libro de Reclamaciones — ARKA PROYECTOS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0F1C2B;--panel:#16263A;--panel2:#1E3048;--cream:#F2E9D8;--gray:#A8B4C2;--gold:#C9A227;--gold2:#D9B45B;--line:rgba(217,180,91,.22)}
+:root{--ink:#0A1322;--p1:#16263A;--p2:#1E3048;--oro:#C9A227;--oro2:#D9B45B;--crema:#F2E9D8;--gris:#A8B4C2;--linea:rgba(217,180,91,.22)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--ink);color:var(--cream);font-family:'Jost',system-ui,sans-serif;font-weight:300;line-height:1.75;font-size:16px}
-header{border-bottom:1px solid var(--line);padding:22px 6vw;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-header .mono{width:38px;height:38px;border:1px solid var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;color:var(--gold2);font-size:20px}
-header b{font-weight:500;letter-spacing:.14em;font-size:14px}
-header a{margin-left:auto;color:var(--gold2);text-decoration:none;font-size:13px;border:1px solid var(--line);padding:7px 14px;border-radius:999px}
-main{max-width:860px;margin:0 auto;padding:48px 6vw 80px}
-h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,40px);line-height:1.15;margin-bottom:8px}
-h1 em{font-style:italic;color:var(--gold2)}
-.fecha{color:var(--gray);font-size:13px;margin-bottom:34px}
-h2{font-family:'Fraunces',serif;font-weight:600;font-size:21px;color:var(--gold2);margin:36px 0 10px}
-p,li{color:#D9DDE3;font-size:15.5px}
-ul{padding-left:22px;margin:8px 0}
-li{margin:6px 0}
-b{font-weight:500;color:var(--cream)}
-a{color:var(--gold2)}
-.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:22px 26px;margin:16px 0}
-footer{border-top:1px solid var(--line);padding:26px 6vw;color:var(--gray);font-size:12.5px;text-align:center}
-footer a{color:var(--gold2);text-decoration:none}
-label{display:block;font-size:13px;color:var(--gray);margin:14px 0 4px}
-input,select,textarea{width:100%;background:#0D1826;border:1px solid var(--line);border-radius:8px;color:var(--cream);padding:11px 13px;font-family:inherit;font-size:15px}
-textarea{min-height:110px;resize:vertical}
-button.btn{margin-top:22px;background:var(--gold);color:#101820;border:0;border-radius:999px;padding:13px 30px;font-family:'Jost';font-weight:500;letter-spacing:.06em;font-size:15px;cursor:pointer}
-.dos{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
-@media(max-width:640px){.dos{grid-template-columns:1fr}}
-.aviso{font-size:13px;color:var(--gray);border-left:2px solid var(--gold);padding-left:14px;margin-top:18px}
-@media print{body{background:#fff;color:#000}p,li{color:#000}header a,button.btn{display:none}}
+html,body{height:100%}
+body{background:radial-gradient(130% 120% at 50% 0%,#12213A 0%,var(--ink) 58%);color:var(--crema);
+  font-family:'Jost',system-ui,sans-serif;font-weight:300;height:100dvh;overflow:hidden;
+  display:grid;grid-template-rows:auto 1fr auto}
+.top{display:flex;align-items:center;gap:13px;padding:14px 4.5vw;border-bottom:1px solid var(--linea)}
+.top .mono{width:34px;height:34px;border:1px solid var(--oro);border-radius:8px;display:grid;place-items:center;
+  font-family:'Fraunces',serif;color:var(--oro2);font-size:18px}
+.top b{font-weight:500;letter-spacing:.16em;font-size:13px}
+.top a{margin-left:auto;color:var(--oro2);text-decoration:none;font-size:12.5px;border:1px solid var(--linea);
+  padding:7px 16px;border-radius:999px;transition:border-color 150ms ease,color 150ms ease}
+.top a:hover{border-color:var(--oro);color:var(--crema)}
+.bot{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:center;padding:10px 4vw;border-top:1px solid var(--linea);
+  font-size:10.5px;letter-spacing:.08em;color:rgba(168,180,194,.75)}
+.bot a{color:inherit;text-decoration:none}
+.bot a:hover{color:var(--oro2)}
+.stage{display:grid;grid-template-columns:minmax(300px,30vw) 1fr;gap:3.2vw;padding:3.2vh 4.5vw;min-height:0}
+.lado{display:flex;flex-direction:column;min-height:0}
+h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(26px,2.9vw,42px);line-height:1.08}
+h1 em{font-style:italic;color:var(--oro2)}
+.marco{font-size:11px;color:var(--gris);margin-top:8px;line-height:1.55;max-width:46ch}
+.prov{margin-top:2vh;border-left:2px solid var(--oro);padding:9px 14px;font-size:12px;line-height:1.6;color:#D9DDE3}
+.prov b{font-weight:500;color:var(--crema)}
+.leyes{margin-top:auto;padding-top:2vh;font-size:10.2px;line-height:1.55;color:rgba(168,180,194,.78);max-width:52ch}
+.panel{background:linear-gradient(165deg,var(--p2),var(--p1));border:1px solid var(--linea);border-radius:14px;
+  padding:3vh 2.6vw;min-height:0;display:flex;flex-direction:column;box-shadow:0 30px 70px rgba(2,6,14,.5)}
+.cuerpo{flex:1;min-height:0;overflow:auto;scrollbar-width:thin;padding-right:6px}
+label{display:block;font-size:11.5px;color:var(--gris);margin:1.4vh 0 4px;letter-spacing:.03em}
+input,select,textarea{width:100%;background:rgba(7,14,26,.65);border:1px solid var(--linea);border-radius:9px;
+  color:var(--crema);padding:10px 13px;font-family:inherit;font-size:14.5px;font-weight:300;
+  transition:border-color 150ms ease}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oro2)}
+textarea{min-height:11vh;resize:none}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:0 1.4vw}
+.btn{background:var(--oro);color:#101820;border:0;border-radius:999px;padding:12px 30px;font-family:'Jost';
+  font-weight:500;letter-spacing:.07em;font-size:14px;cursor:pointer;transition:transform 120ms ease,background 150ms ease}
+.btn:hover{background:var(--oro2)}
+.btn:active{transform:scale(.97)}
+.btn.linea{background:transparent;border:1px solid var(--oro);color:var(--oro2)}
+.acciones{display:flex;gap:12px;justify-content:flex-end;padding-top:2vh;align-items:center}
+.carga{animation:sube 360ms cubic-bezier(.165,.84,.44,1) both}
+.carga.d1{animation-delay:70ms}.carga.d2{animation-delay:140ms}
+@keyframes sube{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.carga{animation:none}*{transition:none!important}}
+@media (max-width:900px){
+  body{height:auto;overflow:auto;display:block}
+  .stage{display:block;padding:20px 5vw}
+  .lado{margin-bottom:18px}.leyes{margin-top:16px}
+  .dos{grid-template-columns:1fr}
+}
+@media print{body{background:#fff;color:#000;height:auto;overflow:visible;display:block}
+  .top,.bot,.acciones,.rail{display:none}
+  .panel{background:#fff;border:0;box-shadow:none;color:#000}
+  .cuerpo{overflow:visible}}
+
+.rail{margin-top:3vh;position:relative;padding-left:26px}
+.rail::before{content:"";position:absolute;left:8px;top:10px;bottom:10px;width:1px;background:var(--linea)}
+.rail .hilo{position:absolute;left:8px;top:10px;width:1px;background:var(--oro2);height:0;transition:height 300ms cubic-bezier(.165,.84,.44,1)}
+.rp{position:relative;padding:1.1vh 0;color:var(--gris);font-size:13.5px;letter-spacing:.02em;transition:color 200ms ease}
+.rp::before{content:"";position:absolute;left:-23px;top:calc(1.1vh + 5px);width:9px;height:9px;border-radius:50%;
+  border:1px solid var(--gris);background:var(--ink);transition:all 200ms ease}
+.rp.on{color:var(--crema)}
+.rp.on::before{border-color:var(--oro2);background:var(--oro2);box-shadow:0 0 10px rgba(217,180,91,.5)}
+.rp.hecho{color:var(--oro2)}
+.rp.hecho::before{border-color:var(--oro2);background:var(--ink)}
+.paso{display:none}
+.paso.on{display:block;animation:sube 260ms cubic-bezier(.165,.84,.44,1) both}
+.ptit{font-family:'Fraunces',serif;font-weight:500;font-size:19px;color:var(--oro2);margin-bottom:.4vh}
+.tipo-sel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.tsel{border:1px solid var(--linea);border-radius:10px;padding:11px 14px;cursor:pointer;transition:border-color 150ms ease,background 150ms ease}
+.tsel.sel{border-color:var(--oro2);background:rgba(201,162,39,.08)}
+.tsel b{display:block;font-weight:500;font-size:14px}.tsel span{font-size:11px;color:var(--gris);line-height:1.45}
+.check{display:flex;gap:9px;align-items:flex-start;margin-top:1.6vh;font-size:12px;color:var(--gris);line-height:1.5}
+.check input{width:14px;height:14px;margin-top:3px;accent-color:var(--oro);flex:none}
+.err{display:none;background:rgba(192,57,43,.12);border:1px solid rgba(192,57,43,.4);color:#E4A9A1;border-radius:9px;
+  padding:9px 14px;font-size:12.5px;margin-top:1.2vh}
+#constancia{display:none;text-align:left}
+#constancia.on{display:flex;flex-direction:column;animation:sube 320ms cubic-bezier(.165,.84,.44,1) both}
+.numero{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(30px,3.6vw,52px);color:var(--oro2);line-height:1}
+.sello{width:54px;height:54px;margin-bottom:1vh}
+.sello circle{fill:none;stroke:var(--oro2);stroke-width:1.5;stroke-dasharray:157;stroke-dashoffset:157;animation:traza 900ms 150ms cubic-bezier(.165,.84,.44,1) forwards}
+.sello path{fill:none;stroke:var(--oro2);stroke-width:2;stroke-dasharray:40;stroke-dashoffset:40;animation:traza 400ms 850ms ease-out forwards}
+@keyframes traza{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.sello circle,.sello path{animation:none;stroke-dashoffset:0}.paso.on,#constancia.on{animation:none}}
+.resu{font-size:13.5px;line-height:1.75;color:#D9DDE3;margin-top:1.4vh}
+.resu b{font-weight:500;color:var(--crema)}
+@media print{.lado{display:none}.stage{display:block;padding:0}}
 </style>
 </head>
 <body>
-<header><div class="mono">A</div><b>ARKA&nbsp;PROYECTOS</b><a href="/">← Volver al sitio</a></header>
-<main>
+<header class="top"><div class="mono">A</div><b>ARKA&nbsp;PROYECTOS</b><a href="/">← Volver al sitio</a></header>
 
-<h1>Libro de <em>Reclamaciones</em></h1>
-<div class="fecha">Hoja de Reclamación virtual · Conforme al Código de Protección y Defensa del Consumidor (Ley N.° 29571) y al Reglamento del Libro de Reclamaciones (D.S. N.° 011-2011-PCM y modificatorias)</div>
+<main class="stage">
+  <aside class="lado">
+    <h1 class="carga">Libro de <em>Reclamaciones</em></h1>
+    <p class="marco carga d1">Hoja de Reclamación virtual, conforme a la Ley N.° 29571 y al D.S. N.° 011-2011-PCM (modificado por D.S. N.° 006-2014-PCM y D.S. N.° 101-2022-PCM).</p>
+    <div class="prov carga d1"><b>ARKA PROYECTOS DEL PERÚ S.A.C.S.</b> · RUC 20616297873<br>Av. Arequipa N° 1421, Dpto. 2006, Santa Beatriz, Cercado de Lima, Lima, Perú</div>
+    <nav class="rail carga d2" id="rail" aria-label="Pasos">
+      <div class="hilo" id="hilo"></div>
+      <div class="rp on" id="rp1">1 &nbsp;Identificación del consumidor</div>
+      <div class="rp" id="rp2">2 &nbsp;Bien contratado</div>
+      <div class="rp" id="rp3">3 &nbsp;Detalle de la reclamación</div>
+    </nav>
+    <p class="leyes">La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante el INDECOPI. El proveedor responde en un plazo no mayor de quince (15) días hábiles improrrogables (D.S. N.° 101-2022-PCM) y conserva esta hoja un mínimo de dos (2) años. INDECOPI: 224-7777 (Lima) · 0-800-4-4040 (provincias) · www.indecopi.gob.pe</p>
+  </aside>
 
-<div class="card"><p><b>ARKA PROYECTOS DEL PERÚ S.A.C.S.</b> · RUC 20616297873<br>Av. Arequipa N° 1421, Dpto. 2006, Santa Beatriz, Cercado de Lima, Lima, Perú</p></div>
+  <section class="panel carga d1">
+    <form id="lr" class="cuerpo" onsubmit="return enviarLR(event)">
+      <div class="paso on" id="paso1">
+        <div class="ptit">¿Quién presenta la hoja?</div>
+        <div class="dos">
+          <div><label>Nombre completo *</label><input id="lNom" required autocomplete="name"></div>
+          <div><label>Documento de identidad (DNI / CE) *</label><input id="lDoc" required maxlength="12"></div>
+        </div>
+        <label>Domicilio *</label><input id="lDom" required autocomplete="street-address">
+        <div class="dos">
+          <div><label>Teléfono *</label><input id="lTel" type="tel" required autocomplete="tel"></div>
+          <div><label>Correo electrónico *</label><input id="lMail" type="email" required autocomplete="email"></div>
+        </div>
+        <label>Padre, madre o apoderado (solo si eres menor de edad)</label><input id="lPad">
+      </div>
 
-<form id="lr" onsubmit="return enviarLR(event)">
-<h2>1. Identificación del consumidor</h2>
-<div class="dos">
-<div><label>Nombre completo *</label><input id="lNom" required></div>
-<div><label>Documento de identidad (DNI / CE) *</label><input id="lDoc" required></div>
-<div><label>Domicilio *</label><input id="lDom" required></div>
-<div><label>Teléfono</label><input id="lTel"></div>
-<div><label>Correo electrónico *</label><input id="lMail" type="email" required></div>
-<div><label>Padre, madre o apoderado (si es menor de edad)</label><input id="lPad"></div>
-</div>
+      <div class="paso" id="paso2">
+        <div class="ptit">¿Qué servicio o producto contrataste?</div>
+        <div class="dos">
+          <div><label>Tipo *</label><select id="lTipoB" required><option value="Servicio">Servicio</option><option value="Producto">Producto</option></select></div>
+          <div><label>Monto reclamado (S/, opcional)</label><input id="lMonto" inputmode="decimal"></div>
+        </div>
+        <label>Descripción del servicio o producto *</label><input id="lDescB" required>
+        <label>Fecha del hecho (opcional)</label><input id="lFecha" type="date">
+      </div>
 
-<h2>2. Identificación del bien contratado</h2>
-<div class="dos">
-<div><label>Tipo *</label><select id="lTipoB" required><option value="Servicio">Servicio</option><option value="Producto">Producto</option></select></div>
-<div><label>Monto reclamado (S/)</label><input id="lMonto"></div>
-</div>
-<label>Descripción del servicio o producto *</label><input id="lDescB" required>
+      <div class="paso" id="paso3">
+        <div class="ptit">Cuéntanos qué pasó</div>
+        <label>¿Es un reclamo o una queja? *</label>
+        <div class="tipo-sel">
+          <div class="tsel sel" id="tReclamo" onclick="setTipo('RECLAMO')"><b>Reclamo</b><span>Disconformidad con el servicio o producto contratado.</span></div>
+          <div class="tsel" id="tQueja" onclick="setTipo('QUEJA')"><b>Queja</b><span>Malestar respecto de la atención al público.</span></div>
+        </div>
+        <label>Detalle de lo ocurrido *</label><textarea id="lDet" required></textarea>
+        <label>Pedido del consumidor (¿qué solución esperas?) *</label><textarea id="lPed" required></textarea>
+        <input id="lWeb" name="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+        <div class="check"><input id="lConf" type="checkbox" required><span>Declaro que los datos consignados son verdaderos. Este registro electrónico reemplaza mi firma. Mis datos se usarán solo para atender esta reclamación (<a href="/privacidad.html" style="color:var(--oro2)">Política de Privacidad</a>).</span></div>
+      </div>
+      <p class="err" id="lrError" role="alert"></p>
+    </form>
 
-<h2>3. Detalle de la reclamación</h2>
-<div class="dos">
-<div><label>Tipo *</label><select id="lTipoR" required>
-<option value="Reclamo">RECLAMO (disconformidad con el servicio o producto)</option>
-<option value="Queja">QUEJA (malestar respecto de la atención)</option>
-</select></div>
-<div><label>Fecha del hecho</label><input id="lFecha" type="date"></div>
-</div>
-<label>Detalle *</label><textarea id="lDet" required></textarea>
-<label>Pedido del consumidor *</label><textarea id="lPed" required></textarea>
+    <div id="constancia" class="cuerpo">
+      <svg class="sello" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="25"/><path d="M20 31 l7 7 l14 -16"/></svg>
+      <div style="font-size:12px;color:var(--gris);letter-spacing:.05em">Hoja de Reclamación registrada</div>
+      <div class="numero" id="okNum"></div>
+      <div style="font-size:12.5px;color:var(--gris);margin-top:6px" id="okFecha"></div>
+      <div class="resu" id="okResumen"></div>
+      <p style="font-size:13px;margin-top:1.4vh;color:#D9DDE3">Enviamos tu hoja en PDF a <b id="okMail" style="color:var(--crema)"></b> (revisa también el correo no deseado). Te responderemos como máximo en quince (15) días hábiles improrrogables.</p>
+    </div>
 
-<input id="lWeb" name="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
-<label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--gray);margin-top:18px"><input id="lConf" type="checkbox" required style="width:auto;margin-top:4px;accent-color:var(--gold)"><span>Declaro que los datos consignados son verdaderos. Este registro electrónico reemplaza mi firma. Mis datos se usarán solo para atender esta reclamación (<a href="/privacidad.html">Política de Privacidad</a>).</span></label>
-<p class="aviso" style="margin-top:14px">Al registrar, su hoja recibe un número correlativo y le llega de inmediato en PDF a su correo, con copia a nuestra área de reclamos. Responderemos en un plazo no mayor de quince (15) días hábiles improrrogables.</p>
-<p class="aviso" id="lrError" style="display:none;border-color:#c0392b;color:#e4a9a1"></p>
-<button class="btn" type="submit" id="btnLR">Registrar mi Hoja de Reclamación</button>
-</form>
-
-<div id="lrOK" style="display:none">
-<div class="card"><h2 style="margin-top:0">Hoja registrada</h2>
-<p style="font-family:'Fraunces',serif;font-size:26px;color:var(--gold2);margin:4px 0" id="okNum"></p>
-<p id="okFecha" class="fecha" style="margin-bottom:12px"></p>
-<div id="okResumen" style="font-size:14.5px"></div>
-<p style="margin-top:14px">Le enviamos su Hoja de Reclamación en PDF a <b id="okMail"></b> (revise también el correo no deseado). Responderemos como máximo en quince (15) días hábiles improrrogables.</p>
-<button class="btn" type="button" onclick="window.print()">Imprimir esta constancia</button>
-<button class="btn" type="button" style="background:transparent;border:1px solid var(--gold);color:var(--gold2)" onclick="location.reload()">Registrar otra hoja</button>
-</div></div>
-
-<h2>Información importante</h2>
-<ul>
-<li>RECLAMO: disconformidad relacionada con los productos o servicios. QUEJA: disconformidad no relacionada con ellos, o malestar respecto de la atención al público.</li>
-<li>La formulación del reclamo <b>no impide acudir a otras vías de solución de controversias</b> ni es requisito previo para interponer una denuncia ante el INDECOPI.</li>
-<li>El proveedor debe dar respuesta al reclamo o queja en un plazo no mayor de <b>quince (15) días hábiles</b>, conforme a la normativa vigente.</li>
-</ul>
-
+    <div class="acciones" id="acc">
+      <button type="button" class="btn linea" id="bAtras" onclick="ir(paso-1)" style="display:none">Atrás</button>
+      <button type="button" class="btn" id="bSig" onclick="ir(paso+1)">Continuar</button>
+      <button type="button" class="btn" id="bReg" onclick="document.getElementById('lr').requestSubmit()" style="display:none">Registrar mi Hoja de Reclamación</button>
+    </div>
+    <div class="acciones" id="accOK" style="display:none">
+      <button type="button" class="btn linea" onclick="location.reload()">Registrar otra hoja</button>
+      <button type="button" class="btn" onclick="window.print()">Imprimir mi constancia</button>
+    </div>
+  </section>
 </main>
-<footer>ARKA PROYECTOS DEL PERÚ S.A.C.S. · RUC 20616297873 · Lima, Perú · consultas@arkaproyectos.com.pe · +51 966 614 682<br>
-<a href="/terminos.html">Aviso legal</a> · <a href="/privacidad.html">Privacidad</a> · <a href="/libro-de-reclamaciones.html">Libro de Reclamaciones</a> · © 2026</footer>
 <script>
 const LIBRO_URL = 'https://script.google.com/macros/s/AKfycbwgbgbVnUtQJmh2mhs1b-RyvJyKDBIcHANXQ-DlZVohoHJZ4qVLsrddVg0T5_emrVlX/exec';
+let paso = 1, tipoSel = 'RECLAMO';
+const $ = id => document.getElementById(id);
+function setTipo(t){ tipoSel=t; $('tReclamo').classList.toggle('sel',t==='RECLAMO'); $('tQueja').classList.toggle('sel',t==='QUEJA'); }
+function valido(n){
+  const fs=$('paso'+n); let ok=true;
+  for(const e of fs.querySelectorAll('input,select,textarea')){ if(!e.checkValidity()){ e.reportValidity(); ok=false; break; } }
+  return ok;
+}
+function ir(n){
+  if(n>paso && !valido(paso)) return;
+  if(n<1||n>3) return;
+  $('paso'+paso).classList.remove('on');
+  paso=n;
+  const p=$('paso'+paso); p.classList.remove('on'); void p.offsetWidth; p.classList.add('on');
+  for(let i=1;i<=3;i++){ const r=$('rp'+i); r.classList.toggle('on',i===paso); r.classList.toggle('hecho',i<paso); }
+  $('hilo').style.height = ((paso-1)/2*84)+'%';
+  $('bAtras').style.display = paso>1?'inline-block':'none';
+  $('bSig').style.display = paso<3?'inline-block':'none';
+  $('bReg').style.display = paso===3?'inline-block':'none';
+  $('lrError').style.display='none';
+}
 const escq = t => String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 async function enviarLR(e){
   e.preventDefault();
-  const v=i=>{const x=document.getElementById(i);return x?x.value.trim():""};
-  const err=document.getElementById('lrError'), btn=document.getElementById('btnLR');
+  const v=i=>{const x=$(i);return x?x.value.trim():""};
+  if(!valido(3)) return false;
+  const err=$('lrError'), btn=$('bReg');
   const d={nombre:v('lNom'),documento:v('lDoc'),domicilio:v('lDom'),telefono:v('lTel'),correo:v('lMail'),
     menor:!!v('lPad'),apNombre:v('lPad'),apDomicilio:'',apTelefono:'',apCorreo:'',
     bien:v('lTipoB'),monto:v('lMonto'),descripcion:v('lDescB'),
-    tipo:(v('lTipoR')==='Queja'?'QUEJA':'RECLAMO'),
+    tipo:tipoSel,
     detalle:(v('lFecha')?('Fecha del hecho: '+v('lFecha')+'. '):'')+v('lDet'),
-    pedido:v('lPed'),conforme:document.getElementById('lConf').checked,web:v('lWeb')};
-  err.style.display='none'; btn.disabled=true; const t0=btn.textContent; btn.textContent='Registrando su hoja…';
+    pedido:v('lPed'),conforme:$('lConf').checked,web:v('lWeb')};
+  err.style.display='none'; btn.disabled=true; const t0=btn.textContent; btn.textContent='Registrando tu hoja…';
   let r=null;
   try{
-    if(!LIBRO_URL) throw new Error('sin servidor');
     const resp=await fetch(LIBRO_URL,{method:'POST',body:JSON.stringify(d),headers:{'Content-Type':'text/plain;charset=utf-8'}});
     r=await resp.json();
   }catch(_){ r=null; }
   btn.disabled=false; btn.textContent=t0;
   if(!r||!r.ok){
-    err.textContent = (r&&r.error==='faltan') ? 'Faltan datos obligatorios. Revise los campos marcados con *.' :
-      'No pudimos registrar su hoja en este momento. Inténtelo de nuevo en unos minutos o escríbanos a reclamos@arkaproyectos.com.pe o al +51 966 614 682.';
+    err.textContent=(r&&r.error==='faltan')?'Faltan datos obligatorios. Revisa los campos marcados con *.':
+      'No pudimos registrar tu hoja en este momento. Inténtalo de nuevo en unos minutos o escríbenos a reclamos@arkaproyectos.com.pe o al +51 966 614 682.';
     err.style.display='block'; return false;
   }
-  document.getElementById('okNum').textContent='N° '+r.numero;
-  document.getElementById('okFecha').textContent='Fecha de registro: '+r.fecha;
-  document.getElementById('okMail').textContent=d.correo;
-  document.getElementById('okResumen').innerHTML=
-    '<b>'+(d.tipo==='QUEJA'?'Queja':'Reclamo')+'</b> de '+escq(d.nombre)+' (doc. '+escq(d.documento)+')<br>'+
+  $('okNum').textContent='N° '+r.numero;
+  $('okFecha').textContent='Fecha de registro: '+r.fecha;
+  $('okMail').textContent=d.correo;
+  $('okResumen').innerHTML='<b>'+(tipoSel==='QUEJA'?'Queja':'Reclamo')+'</b> de '+escq(d.nombre)+' (doc. '+escq(d.documento)+')<br>'+
     '<b>Bien contratado:</b> '+escq(d.bien)+' — '+escq(d.descripcion)+(d.monto?(' · S/ '+escq(d.monto)):'')+'<br>'+
     '<b>Detalle:</b> '+escq(d.detalle)+'<br><b>Pedido:</b> '+escq(d.pedido);
-  document.getElementById('lr').style.display='none';
-  document.getElementById('lrOK').style.display='block';
-  window.scrollTo({top:0});
+  $('lr').style.display='none'; $('acc').style.display='none';
+  $('constancia').classList.add('on'); $('accOK').style.display='flex';
   return false;
 }
 </script>
+<footer class="bot"><span>ARKA PROYECTOS DEL PERÚ S.A.C.S. · RUC 20616297873 · Av. Arequipa N° 1421, Dpto. 2006, Santa Beatriz, Cercado de Lima</span>
+<span><a href="/terminos.html">Legal</a> · <a href="/privacidad.html">Privacidad</a> · <a href="/libro-de-reclamaciones.html">Libro de Reclamaciones</a> · © 2026</span></footer>
 </body></html>
