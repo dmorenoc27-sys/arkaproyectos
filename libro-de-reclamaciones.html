@@ -94,6 +94,7 @@ textarea{min-height:11vh;resize:none}
 .resu{font-size:13.5px;line-height:1.75;color:#D9DDE3;margin-top:1.4vh}
 .resu b{font-weight:500;color:var(--crema)}
 @media print{.lado{display:none}.stage{display:block;padding:0}}
+.btn:focus-visible,.ix:focus-visible,a:focus-visible{outline:2px solid var(--oro2);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -218,6 +219,7 @@ async function enviarLR(e){
   btn.disabled=false; btn.textContent=t0;
   if(!r||!r.ok){
     err.textContent=(r&&r.error==='faltan')?'Faltan datos obligatorios. Revisa los campos marcados con *.':
+      (r&&r.error==='limite')?'Ya registramos una hoja con este correo hace unos minutos. Espera 10 minutos e inténtalo de nuevo.':
       'No pudimos registrar tu hoja en este momento. Inténtalo de nuevo en unos minutos o escríbenos a reclamos@arkaproyectos.com.pe o al +51 966 614 682.';
     err.style.display='block'; return false;
   }
@@ -234,4 +236,5 @@ async function enviarLR(e){
 </script>
 <footer class="bot"><span>ARKA PROYECTOS DEL PERÚ S.A.C.S. · RUC 20616297873 · Av. Arequipa N° 1421, Dpto. 2006, Santa Beatriz, Cercado de Lima</span>
 <span><a href="/terminos.html">Legal</a> · <a href="/privacidad.html">Privacidad</a> · <a href="/libro-de-reclamaciones.html">Libro de Reclamaciones</a> · © 2026</span></footer>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "50716693293541b687f7b454600fd966"}'></script>
 </body></html>
